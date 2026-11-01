@@ -29,6 +29,10 @@
   --shadow: 0 10px 30px -12px rgba(123, 92, 201, .28);
   --header-h: 68px;
   --grad: linear-gradient(135deg, var(--pink-400), var(--lav-400));
+  /* 페이지 배경 — 옅은 크림슨 톤 */
+  --bg-crimson-1: #fcedf0;
+  --bg-crimson-2: #f8d6dd;
+  --bg-crimson-3: #fae2e7;
 }
 
 * { box-sizing: border-box; }
@@ -41,9 +45,10 @@ body {
   color: var(--ink);
   line-height: 1.7;
   background:
-    radial-gradient(1200px 600px at 10% -10%, var(--pink-100), transparent 60%),
-    radial-gradient(900px 600px at 100% 10%, var(--lav-100), transparent 60%),
-    linear-gradient(180deg, var(--pink-50), #fbf8ff 60%, var(--pink-50));
+    radial-gradient(1200px 600px at 10% -10%, var(--bg-crimson-2), transparent 60%),
+    radial-gradient(900px 600px at 100% 10%, var(--bg-crimson-3), transparent 60%),
+    linear-gradient(180deg, var(--bg-crimson-1), #fdf5f6 60%, var(--bg-crimson-1));
+  background-color: var(--bg-crimson-1);
   background-attachment: fixed;
   word-break: keep-all;
 }
@@ -54,7 +59,7 @@ h3 { line-height: 1.4; }
 /* ===== 헤더 ===== */
 .header {
   position: sticky; top: 0; z-index: 50; height: var(--header-h);
-  background: rgba(255, 247, 251, .75);
+  background: rgba(252, 237, 240, .8);
   backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--line); transition: box-shadow .25s;
 }
@@ -295,15 +300,6 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 20px; position: relative; z
 }
 .to-top.is-visible { opacity: 1; transform: none; pointer-events: auto; }
 .to-top:hover { transform: translateY(-3px); }
-
-/* ===== 벚꽃잎 ===== */
-.petals { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
-.petal {
-  position: absolute; top: -40px; width: 14px; height: 12px;
-  background: linear-gradient(135deg, #ffd1e3, #f6a8c8);
-  border-radius: 12px 2px 12px 2px; opacity: .7; animation: fall linear infinite;
-}
-@keyframes fall { to { transform: translate3d(var(--drift, 60px), 110vh, 0) rotate(540deg); } }
 
 /* ===== 스크롤 등장 효과 ===== */
 .reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s, transform .6s; }
@@ -1147,6 +1143,32 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 20px; position: relative; z
 .guide-view__bar .btn--ghost { background: rgba(255,255,255,.12); color: #fff; border-color: rgba(255,255,255,.3); }
 .guide-view iframe { flex: 1; width: 100%; border: 0; background: #fff; }
 .apply-done__btns { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+/* 공지 고정 · 수정 */
+.notice.is-pinned { border-color: var(--pink-400); background: linear-gradient(90deg, #fff0f4, #fff); box-shadow: 0 6px 16px -12px rgba(230,106,157,.6); }
+.notice__pin { flex: none; font-size: 15px; }
+.notice time small { color: var(--ink-soft); font-size: 11px; }
+.pill--pin { background: var(--grad); color: #fff; }
+.nlist li.is-pinned { border-color: var(--pink-200); background: #fff6f9; }
+.nlist li.is-editing { outline: 2px solid var(--lav-400); }
+.nlist li > div .pill { margin-right: 2px; }
+.nform.is-editing { border-color: var(--lav-400); box-shadow: 0 0 0 3px rgba(169,139,232,.25); }
+.nform h3 small { font-weight: 500; color: var(--ink-soft); }
+.pill--popup { background: #fff3d6; color: #a86a00; }
+.nform__popup { margin-top: 8px; padding-top: 10px; border-top: 1px dashed var(--line); }
+.npop .modal__dialog { text-align: left; }
+.npop .badge { margin-bottom: 4px; }
+.npop h3 { margin: 12px 0 4px !important; font-size: 21px; }
+.npop__date { font-size: 13px !important; color: var(--ink-soft); margin: 0 0 10px !important; }
+.npop__text { font-size: 15px; line-height: 1.75; color: var(--ink); background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; max-height: 45vh; overflow: auto; }
+.npop__nav { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; font-size: 13px; color: var(--ink-soft); }
+.npop__nav[hidden] { display: none; }
+/* 공지사항 페이지 내비게이션 */
+.notice__no { flex: none; width: 24px; height: 24px; border-radius: 8px; display: grid; place-items: center; font-size: 12px; font-weight: 700; color: var(--lav-600); background: var(--lav-100); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; margin-top: 14px; flex-wrap: wrap; }
+.pager__btn { min-width: 36px; height: 36px; padding: 0 10px; border-radius: 12px; border: 1px solid var(--line); background: #fff; color: var(--ink-soft); font: inherit; font-size: 14px; font-weight: 700; cursor: pointer; transition: background .2s, color .2s; }
+.pager__btn:hover:not(:disabled) { background: var(--pink-50); color: var(--ink); }
+.pager__btn.is-on { background: var(--grad); color: #fff; border-color: transparent; }
+.pager__btn:disabled { opacity: .35; cursor: default; }
 
 </style>
 </head>
@@ -1171,8 +1193,6 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 20px; position: relative; z
     </div>
   </header>
 
-  <!-- 벚꽃 장식 -->
-  <div class="petals" aria-hidden="true"></div>
 
   <main>
     <section class="hero-wrap" id="hero"></section>        <!-- 첫 화면 + 강의 정보 -->
@@ -1211,7 +1231,9 @@ window.SITE_CONFIG = {
     englishTitle: "Biomechanics of Arthritis",
     university: "고려대학교",
     department: "의과대학 의학과",
-    footerNote: "본 사이트는 강의 운영을 위한 안내 페이지입니다."
+    footerNote: "본 사이트는 강의 운영을 위한 안내 페이지입니다.",
+    // 페이지 맨 아래 저작권 문구
+    copyright: "Copyright 2026 ⓒ AI WEB, All Rights Reserved. | 김기훈(고려대학교)"
   },
 
   /* ---------- 상단 메뉴 (id는 아래 섹션 id와 일치해야 합니다) ---------- */
@@ -1227,7 +1249,7 @@ window.SITE_CONFIG = {
   /* ---------- 첫 화면 ---------- */
   hero: {
     badge: "2026 오디세이 강의",
-    title: "관절염 생체역학",
+    title: "🦴 관절염 생체역학",
     subtitle: "관절통과 생체역학 불균형",
     description:
       "무릎·고관절·어깨의 통증은 왜 생길까요? 관절에 걸리는 힘과 움직임의 불균형을 읽어내고, AI 도구로 직접 동작을 분석하며 관절염의 원인과 해법을 함께 탐구하는 3주 과정입니다.",
@@ -1248,7 +1270,7 @@ window.SITE_CONFIG = {
   /* ---------- 숫자 강조 통계 카드 ---------- */
   stats: {
     eyebrow: "At a glance",
-    title: "숫자로 보는 강의",
+    title: "📊 숫자로 보는 강의",
     items: [
       { number: 3,  suffix: "주",  label: "집중 과정" },
       { number: 6,  suffix: "개",  label: "실습 AI 도구" },
@@ -1260,7 +1282,7 @@ window.SITE_CONFIG = {
   /* ---------- 강의 장점 슬라이드 ---------- */
   strengths: {
     eyebrow: "Why this course",
-    title: "이 강의가 특별한 이유",
+    title: "✨ 이 강의가 특별한 이유",
     lead: "좌우로 넘겨 보세요.",
     slides: [
       { icon: "🦴", title: "통증을 '힘'으로 읽는 관점",
@@ -1286,7 +1308,7 @@ window.SITE_CONFIG = {
    *  videos 의 url 은 현재 유튜브 검색 결과로 연결됩니다. 실제 영상 주소로 바꿔 주세요. */
   curriculum: {
     eyebrow: "Curriculum",
-    title: "커리큘럼",
+    title: "📚 커리큘럼",
     lead: "3주 동안 이론 → 분석 → 적용 순서로 진행됩니다. 주차를 누르면 상세 내용이 펼쳐집니다.",
     startDate: "2026-11-03",          // 첫 수업 (화요일)
     time: "19:00 – 21:00",
@@ -1358,14 +1380,14 @@ window.SITE_CONFIG = {
    *  위 커리큘럼의 수업일(매주 화요일)과 과제 마감일이 자동으로 표시됩니다. */
   schedule: {
     eyebrow: "Schedule",
-    title: "수업 달력",
+    title: "📅 수업 달력",
     lead: "날짜를 누르면 그날 수업 내용과 과제 마감을 확인할 수 있어요."
   },
 
   /* ---------- 실습 AI 도구 ---------- */
   tools: {
     eyebrow: "AI Tools",
-    title: "실습에 쓰는 AI 도구",
+    title: "🤖 실습에 쓰는 AI 도구",
     lead: "모두 무료 또는 학교 계정으로 사용할 수 있는 도구입니다. 첫 수업 전에 가입해 두면 좋아요.",
     items: [
       { icon: "🧍", name: "AI 자세 추정 (MediaPipe 기반)", use: "동작 분석",
@@ -1386,7 +1408,7 @@ window.SITE_CONFIG = {
   /* ---------- 수강 안내 · 준비물 ---------- */
   enrollment: {
     eyebrow: "Enrollment",
-    title: "수강 안내 · 준비물",
+    title: "🎒 수강 안내 · 준비물",
     lead: "수업 전에 아래 항목을 준비해 주세요.",
     prepare: [
       { icon: "📱", title: "스마트폰",      text: "동작 촬영용. 삼각대나 거치대가 있으면 더 좋아요." },
@@ -1418,9 +1440,11 @@ window.SITE_CONFIG = {
     passwordHash: "da5e0b3db3470237bbab7a8d2411f5ce49a9cc0d79396fb0d934b8635e1c3399"
   },
 
-  /* ---------- 공지사항 (관리자 화면에서 작성·수정할 수 있습니다) ---------- */
+  /* ---------- 공지사항 (관리자 화면에서 작성·수정·고정할 수 있습니다)
+   *  pinned: true → 📌 맨 위 고정 / important: true → '중요' 표시 / updated: 수정한 날짜
+   *  popup: true → 🔔 사이트 접속 시 팝업으로 띄우기 / popupUntil: "YYYY-MM-DD" 팝업 마지막 날 (비우면 계속) */
   notices: [
-    { id: "n1", date: "2026-10-31", important: true,
+    { id: "n1", date: "2026-10-31", pinned: true, important: true,
       title: "2026 오디세이 강의 회원가입을 시작합니다",
       body: "11월 2일(월) 18:00까지 사이트의 '회원가입'에서 가입해 주세요. 정원이 차면 조기 마감될 수 있습니다." }
   ],
@@ -1460,7 +1484,7 @@ window.SITE_CONFIG = {
   /* ---------- 실시간 주제 투표 ---------- */
   poll: {
     eyebrow: "Live Poll",
-    title: "가장 먼저 배우고 싶은 주제는?",
+    title: "🗳️ 가장 먼저 배우고 싶은 주제는?",
     lead: "한 사람당 한 표, 언제든 바꿀 수 있어요. 결과는 실시간으로 반영됩니다.",
     refreshSeconds: 10,                      // 결과 자동 새로고침 간격 (운영 모드)
     options: [
@@ -1481,7 +1505,7 @@ window.SITE_CONFIG = {
    *  pattern / minLength: 입력 형식 검사, message: 형식이 틀렸을 때 보여줄 문구 */
   application: {
     eyebrow: "Application",
-    title: "회원가입",
+    title: "📝 회원가입",
     lead: "아래 정보를 입력하고 가입하세요. 가입한 아이디(ID)와 비밀번호(PW)로 '내 강의실'에 로그인합니다. * 표시는 필수 항목입니다.",
     submitLabel: "가입하기",
     successTitle: "회원가입이 완료되었습니다!",
@@ -1514,7 +1538,7 @@ window.SITE_CONFIG = {
   /* ---------- 내 강의실 (로그인 · 출석 · 과제 제출) ---------- */
   portal: {
     eyebrow: "My Class",
-    title: "내 강의실",
+    title: "🏫 내 강의실",
     lead: "학번과 비밀번호로 로그인해 출석을 체크하고 과제 파일을 제출하세요.",
     // 체험 모드에서만 쓰이는 테스트 계정 (운영 모드에서는 스프레드시트의 '학생' 시트로 로그인합니다)
     demoAccounts: [
@@ -1574,7 +1598,7 @@ window.SITE_CONFIG = {
   /* ---------- FAQ ---------- */
   faq: {
     eyebrow: "FAQ",
-    title: "자주 묻는 질문",
+    title: "💬 자주 묻는 질문",
     items: [
       { q: "공학이나 물리 배경이 없어도 들을 수 있나요?",
         a: "네. 필요한 역학 개념은 1주차에 의학적 예시로 처음부터 설명합니다. 고등학교 수준의 물리 지식이면 충분합니다." },
@@ -1609,7 +1633,7 @@ window.SITE_CONFIG = {
 };
 
 /* 이 파일이 만들어진 시각 - 브라우저에 남은 예전 수정본보다 새 파일을 우선 적용 */
-window.SITE_CONFIG.__savedAt = "2026-11-01T01:31:13.000Z";
+window.SITE_CONFIG.__savedAt = "2026-11-01T02:40:17.000Z";
 </script>
 <script id="app-js" data-bundle="1">
 /* =====================================================================
@@ -1998,8 +2022,7 @@ window.SITE_CONFIG.__savedAt = "2026-11-01T01:31:13.000Z";
         </ul>
       </div>
       <div class="footer__bottom">
-        <p><strong>${esc(C.site.university)} ${esc(C.site.department)}</strong> · ${esc(C.site.title)} (${esc(C.site.englishTitle)})</p>
-        <p>${esc(C.site.footerNote)} © ${new Date().getFullYear()} ${esc(C.site.university)}</p>
+        <p>${esc(C.site.copyright || `© ${new Date().getFullYear()} ${C.site.university}`)}</p>
       </div>
     </div>`;
 
@@ -2096,19 +2119,6 @@ window.SITE_CONFIG.__savedAt = "2026-11-01T01:31:13.000Z";
     update();
   }
 
-  // 벚꽃잎 장식
-  if (!reduceMotion) {
-    const box = $(".petals"), count = window.innerWidth < 640 ? 8 : 16;
-    for (let i = 0; i < count; i++) {
-      const el = document.createElement("span");
-      el.className = "petal";
-      el.style.left = Math.random() * 100 + "vw";
-      el.style.animationDuration = 9 + Math.random() * 10 + "s";
-      el.style.animationDelay = -Math.random() * 15 + "s";
-      el.style.setProperty("--drift", Math.random() * 160 - 80 + "px");
-      box.appendChild(el);
-    }
-  }
 })();
 
 </script>
@@ -2377,7 +2387,7 @@ window.SITE_CONFIG.__savedAt = "2026-11-01T01:31:13.000Z";
   /* ================= 2. 실시간 투표 + 3. 내 강의실 ================= */
   const PL = C.poll, PT = C.portal;
   $("#participate").innerHTML = `
-    ${head({ eyebrow: "Participate", title: "함께 참여해요", lead: "투표로 수업 방향을 정하고, 내 강의실에서 출석과 과제를 관리하세요." })}
+    ${head({ eyebrow: "Participate", title: "🙌 함께 참여해요", lead: "투표로 수업 방향을 정하고, 내 강의실에서 출석과 과제를 관리하세요." })}
     <div class="participate-grid">
       <article class="card poll">
         <div class="poll__top">
@@ -2747,34 +2757,103 @@ window.SITE_CONFIG.__savedAt = "2026-11-01T01:31:13.000Z";
 
   /* ================= 공지사항 (사이트 화면) ================= */
   const noticeBox = $("#notice");
-  function renderNotices(items) {
-    items = (items || []).slice().sort((a, b) => (b.important ? 1 : 0) - (a.important ? 1 : 0) || String(b.date).localeCompare(String(a.date)));
-    if (!items.length) { noticeBox.hidden = true; noticeBox.innerHTML = ""; return; }
+  // 📌 고정 공지가 맨 위, 그다음 최신순
+  const sortNotices = (arr) => (arr || []).slice().sort((a, b) => (b.pinned ? 1 : 0) - (a.pinned ? 1 : 0) || String(b.date).localeCompare(String(a.date)));
+  const NOTICE_PER_PAGE = 3;   // 첫 화면 공지사항: 한 페이지에 3개씩
+  let noticeItems = [], noticePage = 1;
+  function renderNotices(items, keepPage) {
+    noticeItems = sortNotices(items);
+    if (!noticeItems.length) { noticeBox.hidden = true; noticeBox.innerHTML = ""; return; }
     noticeBox.hidden = false;
+    if (!keepPage) noticePage = 1;
+    drawNoticePage();
+  }
+  function drawNoticePage() {
+    const items = noticeItems, pages = Math.max(1, Math.ceil(items.length / NOTICE_PER_PAGE));
+    noticePage = Math.min(Math.max(1, noticePage), pages);
+    const start = (noticePage - 1) * NOTICE_PER_PAGE, cur = items.slice(start, start + NOTICE_PER_PAGE);
     const isNew = (d) => (Date.now() - new Date(d + "T00:00").getTime()) / 864e5 < 3;
     noticeBox.innerHTML = `
       <div class="card notice-board">
-        <div class="notice-board__head"><h2>📢 공지사항</h2><span>${items.length}건</span></div>
+        <div class="notice-board__head"><h2>📢 공지사항</h2><span>${items.length}건${pages > 1 ? ` · ${noticePage}/${pages} 페이지` : ""}</span></div>
         <div class="notice-list">
-          ${list(items, (n, i) => `
-            <details class="notice ${n.important ? "is-important" : ""} ${i >= 3 ? "is-more" : ""}" ${i === 0 ? "open" : ""}>
+          ${list(cur, (n, i) => `
+            <details class="notice ${n.important ? "is-important" : ""} ${n.pinned ? "is-pinned" : ""}" ${i === 0 && noticePage === 1 ? "open" : ""}>
               <summary>
+                <span class="notice__no">${start + i + 1}</span>
+                ${n.pinned ? `<span class="notice__pin" title="고정 공지">📌</span>` : ""}
                 ${n.important ? `<span class="pill pill--hw">중요</span>` : ""}
                 <span class="notice__title">${esc(n.title)}</span>
                 ${isNew(n.date) ? `<span class="notice__new">N</span>` : ""}
-                <time>${esc(n.date)}</time>
+                <time>${esc(n.date)}${n.updated && n.updated !== n.date ? ` <small>(${esc(n.updated)} 수정)</small>` : ""}</time>
               </summary>
               <p>${esc(n.body).replace(/\n/g, "<br>")}</p>
             </details>`)}
         </div>
-        ${items.length > 3 ? `<button class="link-btn notice-more">공지 더 보기 (${items.length - 3}건)</button>` : ""}
+        ${pages > 1 ? `<nav class="pager" aria-label="공지사항 페이지">
+          <button class="pager__btn" data-npage="${noticePage - 1}" ${noticePage === 1 ? "disabled" : ""} aria-label="이전 페이지">‹</button>
+          ${list(Array.from({ length: pages }, (_, k) => k + 1), (k) => `<button class="pager__btn ${k === noticePage ? "is-on" : ""}" data-npage="${k}" aria-label="${k}페이지" ${k === noticePage ? 'aria-current="page"' : ""}>${k}</button>`)}
+          <button class="pager__btn" data-npage="${noticePage + 1}" ${noticePage === pages ? "disabled" : ""} aria-label="다음 페이지">›</button>
+        </nav>` : ""}
       </div>`;
   }
   noticeBox.addEventListener("click", (e) => {
-    if (e.target.closest(".notice-more")) { noticeBox.classList.add("show-all"); e.target.remove(); }
+    const b = e.target.closest("[data-npage]"); if (!b || b.disabled) return;
+    noticePage = Number(b.dataset.npage); drawNoticePage();
+    const f = $(`[data-npage="${noticePage}"]`, noticeBox); f && f.focus({ preventScroll: true });
   });
   renderNotices(C.notices);
   if (REMOTE) remote.get({ action: "notices" }).then((j) => { if (j.notices && j.notices.length) renderNotices(j.notices); }).catch(() => {});
+
+  /* ---------- 공지 팝업 (🔔 팝업으로 설정한 공지를 접속 시 띄우기) ---------- */
+  function showNoticePopup(items) {
+    const today = todayStr();
+    const hideKey = (n) => P + "npopHide." + n.id;
+    const list2 = sortNotices(items).filter((n) => n.popup && (!n.popupUntil || n.popupUntil >= today) && Date.now() >= store.get(hideKey(n), 0));
+    if (!list2.length || store.sget(P + "admin") || /[?&]quiz=/.test(location.search) || $(".modal")) return;
+    let idx = 0;
+    const m = document.createElement("div");
+    m.className = "modal npop";
+    m.innerHTML = `
+      <div class="modal__backdrop" data-close></div>
+      <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="np-title" tabindex="-1">
+        <button class="modal__x" data-close aria-label="닫기">×</button>
+        <span class="badge">📢 공지사항</span>
+        <div class="npop__body"></div>
+        <div class="npop__nav" ${list2.length > 1 ? "" : "hidden"}><button class="link-btn" data-np="-1">‹ 이전</button><span class="npop__count"></span><button class="link-btn" data-np="1">다음 ›</button></div>
+        <div class="modal__foot">
+          <label class="agree"><input type="checkbox" class="npop__today"><span>오늘 하루 보지 않기</span></label>
+          <button class="link-btn" data-close>닫기</button>
+        </div>
+      </div>`;
+    const draw = () => {
+      const n = list2[idx];
+      $(".npop__body", m).innerHTML = `
+        <h3 id="np-title">${n.pinned ? "📌 " : ""}${esc(n.title)}</h3>
+        <p class="npop__date">${n.important ? `<span class="pill pill--hw">중요</span> ` : ""}${esc(n.date)}</p>
+        <div class="npop__text">${esc(n.body).replace(/\n/g, "<br>")}</div>`;
+      $(".npop__count", m).textContent = `${idx + 1} / ${list2.length}`;
+    };
+    draw();
+    document.body.appendChild(m); document.body.classList.add("no-scroll");
+    requestAnimationFrame(() => m.classList.add("is-open"));
+    $(".modal__dialog", m).focus();
+    const close = () => {
+      if ($(".npop__today", m).checked) { const t = new Date(); t.setHours(24, 0, 0, 0); list2.forEach((n) => store.set(hideKey(n), t.getTime())); }
+      m.classList.remove("is-open"); document.body.classList.remove("no-scroll");
+      setTimeout(() => m.remove(), 300); document.removeEventListener("keydown", onKey);
+    };
+    const onKey = (e) => { if (e.key === "Escape") close(); if (e.key === "ArrowRight" && list2.length > 1) { idx = (idx + 1) % list2.length; draw(); } if (e.key === "ArrowLeft" && list2.length > 1) { idx = (idx - 1 + list2.length) % list2.length; draw(); } };
+    document.addEventListener("keydown", onKey);
+    m.addEventListener("click", (e) => {
+      const nb = e.target.closest("[data-np]");
+      if (nb) { idx = (idx + Number(nb.dataset.np) + list2.length) % list2.length; return draw(); }
+      if (e.target.closest("[data-close]")) close();
+    });
+  }
+  // 회원가입 안내 팝업(2.5초)보다 먼저 띄우기
+  if (REMOTE) remote.get({ action: "notices" }).then((j) => setTimeout(() => showNoticePopup(j.notices && j.notices.length ? j.notices : C.notices), 600)).catch(() => setTimeout(() => showNoticePopup(C.notices), 1200));
+  else setTimeout(() => showNoticePopup(C.notices), 1200);
 
   /* ================= 관리자 로그인 ================= */
   const lockBtn = $(".admin-lock");
@@ -2966,7 +3045,7 @@ window.SITE_CONFIG.__savedAt = "2026-11-01T01:31:13.000Z";
     ["backend", "데이터 저장(운영 모드)"]
   ];
   const KEY = {
-    title: "제목", englishTitle: "영문 제목", university: "대학", department: "학과", footerNote: "하단 문구", badge: "배지",
+    title: "제목", englishTitle: "영문 제목", university: "대학", department: "학과", footerNote: "하단 문구", copyright: "저작권 문구(푸터)", badge: "배지",
     subtitle: "부제", description: "설명", applyLabel: "신청 버튼 글자", applyUrl: "외부 신청 링크", curriculumLabel: "커리큘럼 버튼 글자",
     icon: "아이콘", label: "이름", value: "내용", sub: "보조 문구", eyebrow: "영문 소제목", lead: "안내 문구", items: "항목",
     number: "숫자", suffix: "단위", slides: "슬라이드", text: "본문", startDate: "첫 수업일 (YYYY-MM-DD)", time: "수업 시간",
@@ -3080,32 +3159,46 @@ window.SITE_CONFIG.__savedAt = "2026-11-01T01:31:13.000Z";
   /* ---------- 공지 ---------- */
   let editNotice = null;
   function tabNotice() {
-    const ns = (work.notices || []).slice().sort((a, b) => String(b.date).localeCompare(String(a.date)));
+    const ns = sortNotices(work.notices);
     const e = editNotice ? (work.notices || []).find((n) => n.id === editNotice) : null;
     main().innerHTML = `
-      <h2 class="admin__h">공지 올리기</h2>
-      <form class="admin__card nform" novalidate>
-        <h3>${e ? "공지 수정" : "새 공지"}</h3>
+      <h2 class="admin__h">공지 관리</h2>
+      <form class="admin__card nform ${e ? "is-editing" : ""}" novalidate>
+        <h3>${e ? `✏️ 공지 수정 중 <small>「${esc(e.title)}」</small>` : "📝 새 공지"}</h3>
         <label class="ed-field"><span>제목 *</span><input name="title" value="${esc(e ? e.title : "")}" placeholder="예) 2주차 실습 장소 변경 안내"></label>
         <label class="ed-field"><span>내용 *</span><textarea name="body" rows="5" placeholder="공지 내용을 입력하세요">${esc(e ? e.body : "")}</textarea></label>
         <div class="nform__row">
           <label class="ed-field"><span>게시일</span><input type="date" name="date" value="${esc(e ? e.date : todayStr())}"></label>
-          <label class="agree"><input type="checkbox" name="important" ${e && e.important ? "checked" : ""}><span>중요 공지 (맨 위 고정)</span></label>
+          <label class="agree"><input type="checkbox" name="pinned" ${e && e.pinned ? "checked" : ""}><span>📌 맨 위에 고정</span></label>
+          <label class="agree"><input type="checkbox" name="important" ${e && e.important ? "checked" : ""}><span>🔴 중요 표시</span></label>
+        </div>
+        <div class="nform__row nform__popup">
+          <label class="agree"><input type="checkbox" name="popup" ${e && e.popup ? "checked" : ""}><span>🔔 사이트 접속 시 팝업으로 띄우기</span></label>
+          <label class="ed-field"><span>팝업 마지막 날 (비우면 계속)</span><input type="date" name="popupUntil" value="${esc(e && e.popupUntil || "")}"></label>
         </div>
         <p class="field__err nform__err"></p>
         <div class="ed__actions">
-          ${e ? `<button type="button" class="btn btn--ghost btn--sm" data-act="ncancel">취소</button>` : ""}
+          ${e ? `<button type="button" class="btn btn--ghost btn--sm" data-act="ncancel">수정 취소</button>` : ""}
           <button class="btn btn--primary btn--sm" type="submit">${e ? "수정 저장" : "공지 등록"}</button>
         </div>
       </form>
       <div class="admin__card">
-        <h3>등록된 공지 <small>${ns.length}건</small></h3>
+        <h3>등록된 공지 <small>${ns.length}건 · 고정 ${ns.filter((n) => n.pinned).length}건</small></h3>
         ${ns.length ? `<ul class="nlist">${list(ns, (n) => `
-          <li><div>${n.important ? `<span class="pill pill--hw">중요</span> ` : ""}<b>${esc(n.title)}</b><small>${esc(n.date)}</small></div>
-          <span class="ed-tools"><button data-nedit="${esc(n.id)}">수정</button><button data-ndel="${esc(n.id)}">삭제</button></span></li>`)}</ul>`
+          <li class="${n.pinned ? "is-pinned" : ""} ${editNotice === n.id ? "is-editing" : ""}">
+            <div>${n.pinned ? `<span class="pill pill--pin">📌 고정</span>` : ""}${n.popup ? `<span class="pill pill--popup">🔔 팝업${n.popupUntil ? ` ~${esc(n.popupUntil.slice(5))}` : ""}</span>` : ""}${n.important ? `<span class="pill pill--hw">중요</span>` : ""}<b>${esc(n.title)}</b>
+              <small>${esc(n.date)}${n.updated && n.updated !== n.date ? ` · ${esc(n.updated)} 수정` : ""}</small></div>
+            <span class="ed-tools">
+              <button data-npin="${esc(n.id)}" aria-pressed="${!!n.pinned}">${n.pinned ? "고정 해제" : "📌 고정"}</button>
+              <button data-npop="${esc(n.id)}" aria-pressed="${!!n.popup}">${n.popup ? "팝업 해제" : "🔔 팝업"}</button>
+              <button data-nedit="${esc(n.id)}">✏️ 수정</button>
+              <button data-ndel="${esc(n.id)}">삭제</button>
+            </span></li>`)}</ul>`
           : `<p class="muted">등록된 공지가 없습니다.</p>`}
+        <p class="admin__hint">📌 고정한 공지는 날짜와 관계없이 공지사항 맨 위에 항상 보입니다. 🔔 팝업 공지는 방문자가 사이트에 들어올 때 창으로 뜨며, 방문자는 '오늘 하루 보지 않기'를 고를 수 있습니다.</p>
         ${!REMOTE ? `<p class="mode-note">공지는 이 브라우저에 바로 반영됩니다. 모든 방문자에게 보이게 하려면 [설정 저장]에서 사이트 파일을 내려받아 교체하세요. (운영 모드에서는 바로 모두에게 공개됩니다)</p>` : ""}
       </div>`;
+    if (e) { const f = $(".nform", panel); f.scrollIntoView({ block: "start" }); $("input[name=title]", f).focus({ preventScroll: true }); }
   }
   async function persistNotices() {
     const all = work.notices || [];
@@ -3113,7 +3206,7 @@ window.SITE_CONFIG.__savedAt = "2026-11-01T01:31:13.000Z";
     const cfg = clone(window.SITE_CONFIG); cfg.notices = clone(all);
     saveOverride(cfg, false);
     window.SITE_CONFIG.notices = clone(all);
-    renderNotices(all);
+    renderNotices(all, true);
   }
 
   /* ---------- 수강생 명단 ---------- */
@@ -3380,6 +3473,20 @@ window.SITE_CONFIG = ${JSON.stringify(cfg, null, 2).replace(/<\//g, "<\\/")};
 
     // 공지
     const ne = t.closest("[data-nedit]"); if (ne) { editNotice = ne.dataset.nedit; return tabNotice(); }
+    const npo = t.closest("[data-npop]");
+    if (npo) {
+      const n = (work.notices || []).find((x) => x.id === npo.dataset.npop); if (!n) return;
+      n.popup = !n.popup;
+      try { await persistNotices(); toast(n.popup ? "🔔 팝업 공지로 설정했습니다." : "팝업을 해제했습니다."); } catch (err) { n.popup = !n.popup; toast(err.message, "is-error"); }
+      return tabNotice();
+    }
+    const np = t.closest("[data-npin]");
+    if (np) {
+      const n = (work.notices || []).find((x) => x.id === np.dataset.npin); if (!n) return;
+      n.pinned = !n.pinned;
+      try { await persistNotices(); toast(n.pinned ? "📌 맨 위에 고정했습니다." : "고정을 해제했습니다."); } catch (err) { n.pinned = !n.pinned; toast(err.message, "is-error"); }
+      return tabNotice();
+    }
     const nd = t.closest("[data-ndel]");
     if (nd) {
       if (nd.dataset.confirm !== "1") { nd.dataset.confirm = "1"; nd.textContent = "정말 삭제?"; return; }
@@ -3491,10 +3598,11 @@ window.SITE_CONFIG = ${JSON.stringify(cfg, null, 2).replace(/<\//g, "<\\/")};
       const el = f.elements, title = el.title.value.trim(), body = el.body.value.trim(), err = $(".nform__err", f);
       if (!title || !body) { err.textContent = `⚠ ${!title ? "제목" : "내용"}을 입력해 주세요.`; (!title ? el.title : el.body).focus(); return; }
       work.notices = work.notices || [];
-      const item = { id: editNotice || "n" + Date.now().toString(36), date: el.date.value || todayStr(), important: el.important.checked, title, body };
+      const item = { id: editNotice || "n" + Date.now().toString(36), date: el.date.value || todayStr(), pinned: el.pinned.checked, important: el.important.checked, popup: el.popup.checked, popupUntil: el.popup.checked ? el.popupUntil.value : "", title, body };
+      if (editNotice) item.updated = todayStr();   // 수정한 날짜 기록
       const i = work.notices.findIndex((n) => n.id === item.id);
       if (i >= 0) work.notices[i] = item; else work.notices.push(item);
-      try { await persistNotices(); toast(editNotice ? "공지를 수정했습니다." : "공지를 등록했습니다. 사이트 상단에 표시됩니다."); editNotice = null; tabNotice(); }
+      try { await persistNotices(); toast(editNotice ? "공지를 수정했습니다." : "공지를 등록했습니다. 사이트 상단에 표시됩니다."); editNotice = null; tabNotice(); main().scrollTop = 0; }
       catch (ex) { err.textContent = "⚠ " + ex.message; }
     }
     if (f.classList.contains("pwform")) {
@@ -7019,7 +7127,7 @@ const HEADERS = {
   "출석": ["시각", "아이디", "이름", "주차"],
   "과제제출": ["시각", "아이디", "이름", "주차", "파일명", "크기(byte)", "지각여부", "파일 링크"],
   "출석코드": ["주차", "코드", "출석가능"],
-  "공지": ["id", "게시일", "중요", "제목", "내용"],
+  "공지": ["id", "게시일", "중요", "제목", "내용", "고정", "수정일", "팝업", "팝업종료일"],
   "퀴즈결과": ["저장시각", "퀴즈", "PIN", "순위", "이름", "아이디", "총점", "정답 수", "문항 수", "문항별 정오"]
 };
 const FOLDER_NAME = "관절염생체역학_과제제출";
@@ -7210,7 +7318,10 @@ function notices_() {
   if (!sh) return [];
   return sh.getDataRange().getValues().slice(1).filter(function (r) { return r[0]; }).map(function (r) {
     const d = r[1] instanceof Date ? Utilities.formatDate(r[1], Session.getScriptTimeZone(), "yyyy-MM-dd") : String(r[1]);
-    return { id: String(r[0]), date: d, important: r[2] === true || String(r[2]).toUpperCase() === "TRUE", title: String(r[3]), body: String(r[4]) };
+    const yes = function (v) { return v === true || String(v).toUpperCase() === "TRUE"; };
+    const up = r[6] instanceof Date ? Utilities.formatDate(r[6], Session.getScriptTimeZone(), "yyyy-MM-dd") : String(r[6] || "");
+    const pu = r[8] instanceof Date ? Utilities.formatDate(r[8], Session.getScriptTimeZone(), "yyyy-MM-dd") : String(r[8] || "");
+    return { id: String(r[0]), date: d, important: yes(r[2]), title: String(r[3]), body: String(r[4]), pinned: yes(r[5]), updated: up, popup: yes(r[7]), popupUntil: pu };
   });
 }
 
@@ -7247,9 +7358,10 @@ function adminSaveNotices_(list) {
     const ss = SpreadsheetApp.getActiveSpreadsheet();
     let sh = ss.getSheetByName(SHEET.notices);
     if (!sh) { sh = ss.insertSheet(SHEET.notices); sh.appendRow(HEADERS["공지"]); }
-    if (sh.getLastRow() > 1) sh.getRange(2, 1, sh.getLastRow() - 1, 5).clearContent();
-    const rows = list.map(function (n) { return [String(n.id), String(n.date), !!n.important, String(n.title).slice(0, 200), String(n.body).slice(0, 5000)]; });
-    if (rows.length) sh.getRange(2, 1, rows.length, 5).setValues(rows);
+    sh.getRange(1, 1, 1, 9).setValues([HEADERS["공지"]]);
+    if (sh.getLastRow() > 1) sh.getRange(2, 1, sh.getLastRow() - 1, 9).clearContent();
+    const rows = list.map(function (n) { return [String(n.id), String(n.date), !!n.important, String(n.title).slice(0, 200), String(n.body).slice(0, 5000), !!n.pinned, String(n.updated || ""), !!n.popup, String(n.popupUntil || "")]; });
+    if (rows.length) sh.getRange(2, 1, rows.length, 9).setValues(rows);
     return {};
   });
 }
