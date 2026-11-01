@@ -1,11 +1,12 @@
 <!doctype html>
-<html lang="ko"><head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>관절염 생체역학 | 고려대학교 의학과</title>
   <!-- 「관절염 생체역학」 강의 운영 사이트 — 이 파일 하나에 디자인·설정·기능·안내서가 모두 들어 있습니다. 내용 수정은 오른쪽 위 🔒 관리자 화면에서. -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&amp;display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet" />
   <style id="site-css">
 /* ===== 색상·모양 토큰 (분위기를 바꾸려면 여기만 수정) ===== */
 :root {
@@ -28,10 +29,10 @@
   --shadow: 0 10px 30px -12px rgba(123, 92, 201, .28);
   --header-h: 68px;
   --grad: linear-gradient(135deg, var(--pink-400), var(--lav-400));
-  /* 페이지 배경 — 옅은 크림슨 톤 */
-  --bg-crimson-1: #fcedf0;
-  --bg-crimson-2: #f8d6dd;
-  --bg-crimson-3: #fae2e7;
+  /* 페이지 배경 — 옅은 갈색(베이지·모카) 톤 */
+  --bg-crimson-1: #f7f0e8;
+  --bg-crimson-2: #ecdccb;
+  --bg-crimson-3: #f2e6d9;
 }
 
 * { box-sizing: border-box; }
@@ -46,7 +47,7 @@ body {
   background:
     radial-gradient(1200px 600px at 10% -10%, var(--bg-crimson-2), transparent 60%),
     radial-gradient(900px 600px at 100% 10%, var(--bg-crimson-3), transparent 60%),
-    linear-gradient(180deg, var(--bg-crimson-1), #fdf5f6 60%, var(--bg-crimson-1));
+    linear-gradient(180deg, var(--bg-crimson-1), #faf6f1 60%, var(--bg-crimson-1));
   background-color: var(--bg-crimson-1);
   background-attachment: fixed;
   word-break: keep-all;
@@ -58,7 +59,7 @@ h3 { line-height: 1.4; }
 /* ===== 헤더 ===== */
 .header {
   position: sticky; top: 0; z-index: 50; height: var(--header-h);
-  background: rgba(252, 237, 240, .8);
+  background: rgba(247, 240, 232, .85);
   backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--line); transition: box-shadow .25s;
 }
@@ -1179,7 +1180,7 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 20px; position: relative; z
   <!-- 고정 헤더 -->
   <header class="header" id="top">
     <div class="header__inner">
-      <a href="#hero" class="brand" data-scroll="">
+      <a href="#hero" class="brand" data-scroll>
         <span class="brand__mark">✿</span>
         <span class="brand__text">
           <strong id="brand-title"></strong>
@@ -1192,7 +1193,7 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 20px; position: relative; z
       </button>
       <nav class="nav" id="nav"></nav>
       <button class="admin-lock" aria-label="관리자 로그인" title="관리자">
-        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 2a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2h-1V7a5 5 0 0 0-5-5Zm-3 8V7a3 3 0 0 1 6 0v3H9Zm3 4a2 2 0 0 1 1 3.73V19h-2v-1.27A2 2 0 0 1 12 14Z"></path></svg>
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 2a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2h-1V7a5 5 0 0 0-5-5Zm-3 8V7a3 3 0 0 1 6 0v3H9Zm3 4a2 2 0 0 1 1 3.73V19h-2v-1.27A2 2 0 0 1 12 14Z"/></svg>
       </button>
     </div>
   </header>
@@ -1200,7 +1201,7 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 20px; position: relative; z
 
   <main>
     <section class="hero-wrap" id="hero"></section>        <!-- 첫 화면 + 강의 정보 -->
-    <section class="section section--notice" id="notice" hidden=""></section>  <!-- 공지사항 -->
+    <section class="section section--notice" id="notice" hidden></section>  <!-- 공지사항 -->
     <section class="section" id="about"></section>         <!-- 통계 + 장점 슬라이드 -->
     <section class="section" id="curriculum"></section>    <!-- 주차별 커리큘럼 -->
     <section class="section" id="schedule"></section>      <!-- 월간 달력 -->
@@ -1219,700 +1220,431 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 20px; position: relative; z
   <!-- ▼ 이 아래는 index.html 한 파일에 모든 기능을 담기 위한 부분입니다. -->
 <script>window.__PAGE_PREFIX = document.documentElement.outerHTML; /* 관리자 화면의 "index.html 내려받기"에 사용 */</script>
 <script id="site-config" data-bundle="1">
-/* 사이트 설정 — 관리자 화면에서 2026-11-01 12:06에 저장. 관리자 화면(🔒)에서 고치는 것을 권장합니다. */
+/* =====================================================================
+ *  사이트 설정 (SITE_CONFIG)
+ *  ---------------------------------------------------------------------
+ *  사이트에 보이는 모든 글·메뉴·일정·퀴즈는 여기 한 곳에 모여 있습니다.
+ *  - 가장 쉬운 방법: 오른쪽 위 🔒 관리자 화면 → 콘텐츠 편집 → 저장 → [설정 저장]에서 index.html 내려받기
+ *  - 직접 고칠 때: 따옴표("...") 안의 글자만 바꾸고 저장 후 새로고침 (쉼표·따옴표가 빠지지 않게 주의)
+ *  ※ [ ] 로 표시된 부분과 "예시 값" 주석이 붙은 숫자는 실제 정보로 바꿔 주세요.
+ * ===================================================================== */
+
 window.SITE_CONFIG = {
-  "site": {
-    "title": "관절염 생체역학",
-    "englishTitle": "Biomechanics of Arthritis",
-    "university": "고려대학교",
-    "department": "의과대학 의학과",
-    "version": "v1.0.0",
-    "footerNote": "본 사이트는 강의 운영을 위한 안내 페이지입니다.",
-    "copyright": "Copyright 2026 ⓒ AI WEB, All Rights Reserved. | 김기훈(고려대학교)"
+  /* ---------- 기본 정보 ---------- */
+  site: {
+    title: "관절염 생체역학",
+    englishTitle: "Biomechanics of Arthritis",
+    university: "고려대학교",
+    department: "의과대학 의학과",
+    version: "v1.0.1",            // 헤더 제목 옆 버전 표시 (비우면 숨김). 관리자 화면에서 콘텐츠·공지·퀴즈를 저장할 때마다 끝자리가 1씩 자동으로 올라갑니다
+    footerNote: "본 사이트는 강의 운영을 위한 안내 페이지입니다.",
+    // 페이지 맨 아래 저작권 문구
+    copyright: "Copyright 2026 ⓒ AI WEB, All Rights Reserved. | 김기훈(고려대학교)"
   },
-  "nav": [
-    {
-      "id": "about",
-      "label": "프로그램 소개"
-    },
-    {
-      "id": "curriculum",
-      "label": "커리큘럼"
-    },
-    {
-      "id": "enrollment",
-      "label": "수강 안내"
-    },
-    {
-      "id": "participate",
-      "label": "참여하기"
-    },
-    {
-      "id": "faq",
-      "label": "FAQ"
-    },
-    {
-      "id": "instructor",
-      "label": "교수자"
-    }
+
+  /* ---------- 상단 메뉴 (id는 아래 섹션 id와 일치해야 합니다) ---------- */
+  nav: [
+    { id: "about",       label: "프로그램 소개" },
+    { id: "curriculum",  label: "커리큘럼" },
+    { id: "enrollment",  label: "수강 안내" },
+    { id: "participate", label: "참여하기" },
+    { id: "faq",         label: "FAQ" },
+    { id: "instructor",  label: "교수자" }
   ],
-  "hero": {
-    "badge": "2026 오디세이 강의",
-    "title": "🦴 관절염 생체역학",
-    "subtitle": "관절통과 생체역학 불균형",
-    "description": "무릎·고관절·어깨의 통증은 왜 생길까요? 관절에 걸리는 힘과 움직임의 불균형을 읽어내고, AI 도구로 직접 동작을 분석하며 관절염의 원인과 해법을 함께 탐구하는 3주 과정입니다.",
-    "applyLabel": "회원가입",
-    "applyUrl": "",
-    "curriculumLabel": "커리큘럼 보기"
+
+  /* ---------- 첫 화면 ---------- */
+  hero: {
+    badge: "2026 오디세이 강의",
+    title: "🦴 관절염 생체역학",
+    subtitle: "관절통과 생체역학 불균형",
+    description:
+      "무릎·고관절·어깨의 통증은 왜 생길까요? 관절에 걸리는 힘과 움직임의 불균형을 읽어내고, AI 도구로 직접 동작을 분석하며 관절염의 원인과 해법을 함께 탐구하는 3주 과정입니다.",
+    // 회원가입 버튼: 외부 가입 링크(구글폼 등)를 쓰려면 applyUrl 에 넣으세요. 비워 두면 사이트 안의 '회원가입'으로 이동합니다.
+    applyLabel: "회원가입",
+    applyUrl: "",
+    curriculumLabel: "커리큘럼 보기"
   },
-  "overview": [
-    {
-      "icon": "📅",
-      "label": "일정",
-      "value": "2026. 11. 3 – 11. 17",
-      "sub": "총 3주"
-    },
-    {
-      "icon": "⏰",
-      "label": "시간",
-      "value": "매주 화요일 19:00–21:00",
-      "sub": "회당 2시간"
-    },
-    {
-      "icon": "💻",
-      "label": "수업 방식",
-      "value": "대면 강의 + AI 실습",
-      "sub": "[의과대학 ○○○호]"
-    },
-    {
-      "icon": "🎓",
-      "label": "수강 대상",
-      "value": "의학과 학생",
-      "sub": "관심 있는 교직원 환영"
-    }
+
+  /* ---------- 한눈에 보는 강의 정보 (첫 화면 아래) ---------- */
+  overview: [
+    { icon: "📅", label: "일정",      value: "2026. 11. 3 – 11. 17",     sub: "총 3주" },
+    { icon: "⏰", label: "시간",      value: "매주 화요일 19:00–21:00",   sub: "회당 2시간" },
+    { icon: "💻", label: "수업 방식", value: "대면 강의 + AI 실습",       sub: "[의과대학 ○○○호]" },
+    { icon: "🎓", label: "수강 대상", value: "의학과 학생",               sub: "관심 있는 교직원 환영" }
   ],
-  "stats": {
-    "eyebrow": "At a glance",
-    "title": "📊 숫자로 보는 강의",
-    "items": [
-      {
-        "number": 3,
-        "suffix": "주",
-        "label": "집중 과정"
-      },
-      {
-        "number": 6,
-        "suffix": "개",
-        "label": "실습 AI 도구"
-      },
-      {
-        "number": 12,
-        "suffix": "권",
-        "label": "교수자 저술"
-      },
-      {
-        "number": 20,
-        "suffix": "년+",
-        "label": "강의 경력"
-      }
+
+  /* ---------- 숫자 강조 통계 카드 ---------- */
+  stats: {
+    eyebrow: "At a glance",
+    title: "📊 숫자로 보는 강의",
+    items: [
+      { number: 3,  suffix: "주",  label: "집중 과정" },
+      { number: 6,  suffix: "개",  label: "실습 AI 도구" },
+      { number: 12, suffix: "권",  label: "교수자 저술" },     // 예시 값
+      { number: 20, suffix: "년+", label: "강의 경력" }        // 예시 값
     ]
   },
-  "strengths": {
-    "eyebrow": "Why this course",
-    "title": "✨ 이 강의가 특별한 이유",
-    "lead": "좌우로 넘겨 보세요.",
-    "slides": [
-      {
-        "icon": "🦴",
-        "title": "통증을 '힘'으로 읽는 관점",
-        "text": "관절통을 단순한 염증이 아니라 하중·정렬·근력의 불균형 문제로 바라보는 생체역학적 사고를 익힙니다."
-      },
-      {
-        "icon": "🤖",
-        "title": "AI와 함께하는 동작 분석",
-        "text": "스마트폰 영상과 AI 자세 추정 도구로 보행·스쿼트 동작을 직접 분석하고 관절 각도를 측정합니다."
-      },
-      {
-        "icon": "🩺",
-        "title": "임상 사례 중심 토론",
-        "text": "실제 환자 사례(익명화)를 바탕으로 통증의 역학적 원인을 추론하고 치료·재활 방향을 토론합니다."
-      },
-      {
-        "icon": "📚",
-        "title": "근거 기반 학습",
-        "text": "AI 검색·요약 도구로 최신 논문을 빠르게 찾아 읽고, 근거를 비판적으로 평가하는 법을 연습합니다."
-      },
-      {
-        "icon": "🤝",
-        "title": "소규모 팀 프로젝트",
-        "text": "3–4명이 팀을 이루어 하나의 관절 문제를 정하고, 분석부터 해결안 발표까지 함께 완성합니다."
-      }
+
+  /* ---------- 강의 장점 슬라이드 ---------- */
+  strengths: {
+    eyebrow: "Why this course",
+    title: "✨ 이 강의가 특별한 이유",
+    lead: "좌우로 넘겨 보세요.",
+    slides: [
+      { icon: "🦴", title: "통증을 '힘'으로 읽는 관점",
+        text: "관절통을 단순한 염증이 아니라 하중·정렬·근력의 불균형 문제로 바라보는 생체역학적 사고를 익힙니다." },
+      { icon: "🤖", title: "AI와 함께하는 동작 분석",
+        text: "스마트폰 영상과 AI 자세 추정 도구로 보행·스쿼트 동작을 직접 분석하고 관절 각도를 측정합니다." },
+      { icon: "🩺", title: "임상 사례 중심 토론",
+        text: "실제 환자 사례(익명화)를 바탕으로 통증의 역학적 원인을 추론하고 치료·재활 방향을 토론합니다." },
+      { icon: "📚", title: "근거 기반 학습",
+        text: "AI 검색·요약 도구로 최신 논문을 빠르게 찾아 읽고, 근거를 비판적으로 평가하는 법을 연습합니다." },
+      { icon: "🤝", title: "소규모 팀 프로젝트",
+        text: "3–4명이 팀을 이루어 하나의 관절 문제를 정하고, 분석부터 해결안 발표까지 함께 완성합니다." }
     ]
   },
-  "curriculum": {
-    "eyebrow": "Curriculum",
-    "title": "📚 커리큘럼",
-    "lead": "3주 동안 이론 → 분석 → 적용 순서로 진행됩니다. 주차를 누르면 상세 내용이 펼쳐집니다.",
-    "startDate": "2026-11-03",
-    "time": "19:00 – 21:00",
-    "location": "[의과대학 본관 ○○○호]",
-    "weeks": [
+
+  /* ---------- 커리큘럼 · 일정 (3주) ----------
+   *  startDate : 첫 수업 날짜(YYYY-MM-DD). 이후 주차는 7일씩 자동 계산되어 달력에 표시됩니다.
+   *  특정 주차만 날짜가 다르면 그 주차에 date: "2026-11-12" 처럼 적으면 됩니다.
+   *  time / location 도 주차별로 다르면 각 주차에 따로 적으세요. (없으면 아래 기본값 사용)
+   *  assignment 를 지우면 그 주차는 '과제 없음'으로 표시됩니다.
+   *  due 형식: "YYYY-MM-DDTHH:MM" (한국 시간 기준)
+   *  submitUrl: 제출 링크(구글폼·LMS 등). 비워 두면 '링크 준비 중'으로 표시됩니다.
+   *  videos 의 url 은 현재 유튜브 검색 결과로 연결됩니다. 실제 영상 주소로 바꿔 주세요. */
+  curriculum: {
+    eyebrow: "Curriculum",
+    title: "📚 커리큘럼",
+    lead: "3주 동안 이론 → 분석 → 적용 순서로 진행됩니다. 주차를 누르면 상세 내용이 펼쳐집니다.",
+    startDate: "2026-11-03",          // 첫 수업 (화요일)
+    time: "19:00 – 21:00",
+    location: "[의과대학 본관 ○○○호]",
+    weeks: [
       {
-        "tag": "1주차",
-        "theme": "이론",
-        "title": "관절과 힘의 언어",
-        "summary": "관절통을 '힘의 불균형'으로 읽기 위한 기본 개념을 다집니다.",
-        "topics": [
+        tag: "1주차", theme: "이론", title: "관절과 힘의 언어",
+        summary: "관절통을 '힘의 불균형'으로 읽기 위한 기본 개념을 다집니다.",
+        topics: [
           "강의 오리엔테이션 · AI 도구 사용 원칙(개인정보 보호)",
           "무릎·고관절·어깨 관절의 해부와 운동학",
           "하중, 모멘트, 관절 반력의 개념",
           "관절통과 생체역학 불균형: 정렬·근력·하중의 삼각관계"
         ],
-        "videos": [
-          {
-            "title": "무릎 관절 생체역학 개요",
-            "url": "https://www.youtube.com/results?search_query=knee+joint+biomechanics"
-          },
-          {
-            "title": "관절 반력(Joint reaction force) 이해하기",
-            "url": "https://www.youtube.com/results?search_query=joint+reaction+force+biomechanics"
-          }
+        videos: [
+          { title: "무릎 관절 생체역학 개요", url: "https://www.youtube.com/results?search_query=knee+joint+biomechanics" },
+          { title: "관절 반력(Joint reaction force) 이해하기", url: "https://www.youtube.com/results?search_query=joint+reaction+force+biomechanics" }
         ],
-        "assignment": {
-          "title": "과제 1 · 나의 관절 관찰 노트",
-          "description": "일상 동작(계단 오르기, 쪼그려 앉기 등) 하나를 골라 어느 관절에 어떤 힘이 걸리는지 그림과 함께 1쪽 이내로 정리하세요. AI 도구 활용 시 사용한 프롬프트를 함께 적어 주세요.",
-          "due": "2026-11-09T23:59",
-          "submitUrl": ""
+        assignment: {
+          title: "과제 1 · 나의 관절 관찰 노트",
+          description: "일상 동작(계단 오르기, 쪼그려 앉기 등) 하나를 골라 어느 관절에 어떤 힘이 걸리는지 그림과 함께 1쪽 이내로 정리하세요. AI 도구 활용 시 사용한 프롬프트를 함께 적어 주세요.",
+          due: "2026-11-09T23:59",
+          submitUrl: ""
         }
       },
       {
-        "tag": "2주차",
-        "theme": "분석",
-        "title": "AI로 보는 움직임",
-        "summary": "스마트폰 영상과 AI 자세 추정 도구로 동작을 직접 분석합니다.",
-        "topics": [
+        tag: "2주차", theme: "분석", title: "AI로 보는 움직임",
+        summary: "스마트폰 영상과 AI 자세 추정 도구로 동작을 직접 분석합니다.",
+        topics: [
           "AI 자세 추정(MediaPipe 기반)으로 보행·스쿼트 촬영 및 관절 각도 측정",
           "무릎 내반·외반, 골반 기울기 등 정렬 이상 찾기",
           "측정값을 표·그래프로 정리하고 해석하기",
           "Perplexity·NotebookLM으로 관련 논문 탐색과 근거 정리"
         ],
-        "videos": [
-          {
-            "title": "AI 자세 추정(Pose estimation) 소개",
-            "url": "https://www.youtube.com/results?search_query=mediapipe+pose+estimation+gait+analysis"
-          },
-          {
-            "title": "보행 분석의 기초",
-            "url": "https://www.youtube.com/results?search_query=gait+analysis+basics"
-          }
+        videos: [
+          { title: "AI 자세 추정(Pose estimation) 소개", url: "https://www.youtube.com/results?search_query=mediapipe+pose+estimation+gait+analysis" },
+          { title: "보행 분석의 기초", url: "https://www.youtube.com/results?search_query=gait+analysis+basics" }
         ],
-        "assignment": {
-          "title": "과제 2 · 동작 분석 리포트",
-          "description": "팀원 1명의 스쿼트 또는 보행 영상을 AI 도구로 분석하고, 측정한 관절 각도와 해석을 2쪽 이내 리포트로 제출하세요. (얼굴이 드러나지 않게 촬영)",
-          "due": "2026-11-16T23:59",
-          "submitUrl": ""
+        assignment: {
+          title: "과제 2 · 동작 분석 리포트",
+          description: "팀원 1명의 스쿼트 또는 보행 영상을 AI 도구로 분석하고, 측정한 관절 각도와 해석을 2쪽 이내 리포트로 제출하세요. (얼굴이 드러나지 않게 촬영)",
+          due: "2026-11-16T23:59",
+          submitUrl: ""
         }
       },
       {
-        "tag": "3주차",
-        "theme": "적용",
-        "title": "통증에서 해법으로",
-        "summary": "사례 토론과 팀 프로젝트 발표로 배운 내용을 임상 문제에 적용합니다.",
-        "topics": [
+        tag: "3주차", theme: "적용", title: "통증에서 해법으로",
+        summary: "사례 토론과 팀 프로젝트 발표로 배운 내용을 임상 문제에 적용합니다.",
+        topics: [
           "골관절염 환자 사례 토론 (익명화 자료)",
           "보조기·테이핑·운동 처방의 생체역학적 근거",
           "팀 프로젝트 발표 및 피드백",
           "강의 마무리 · 수료"
         ],
-        "videos": [
-          {
-            "title": "무릎 골관절염과 하중 조절",
-            "url": "https://www.youtube.com/results?search_query=knee+osteoarthritis+biomechanics+load"
-          }
+        videos: [
+          { title: "무릎 골관절염과 하중 조절", url: "https://www.youtube.com/results?search_query=knee+osteoarthritis+biomechanics+load" }
         ],
-        "assignment": {
-          "title": "최종 과제 · 팀 프로젝트 발표 자료",
-          "description": "팀별로 선택한 관절 문제의 분석 결과와 해결안을 발표 자료(10분 분량)로 제출하세요. 발표 전날까지 업로드해 주세요.",
-          "due": "2026-11-16T18:00",
-          "submitUrl": ""
+        assignment: {
+          title: "최종 과제 · 팀 프로젝트 발표 자료",
+          description: "팀별로 선택한 관절 문제의 분석 결과와 해결안을 발표 자료(10분 분량)로 제출하세요. 발표 전날까지 업로드해 주세요.",
+          due: "2026-11-16T18:00",
+          submitUrl: ""
         }
       }
     ]
   },
-  "schedule": {
-    "eyebrow": "Schedule",
-    "title": "📅 수업 달력",
-    "lead": "날짜를 누르면 그날 수업 내용과 과제 마감을 확인할 수 있어요."
+
+  /* ---------- 월간 달력 ----------
+   *  위 커리큘럼의 수업일(매주 화요일)과 과제 마감일이 자동으로 표시됩니다. */
+  schedule: {
+    eyebrow: "Schedule",
+    title: "📅 수업 달력",
+    lead: "날짜를 누르면 그날 수업 내용과 과제 마감을 확인할 수 있어요."
   },
-  "tools": {
-    "eyebrow": "AI Tools",
-    "title": "🤖 실습에 쓰는 AI 도구",
-    "lead": "모두 무료 또는 학교 계정으로 사용할 수 있는 도구입니다. 첫 수업 전에 가입해 두면 좋아요.",
-    "items": [
-      {
-        "icon": "🧍",
-        "name": "AI 자세 추정 (MediaPipe 기반)",
-        "use": "동작 분석",
-        "text": "스마트폰 영상에서 관절 위치를 자동 추출해 무릎·고관절 각도를 측정합니다."
-      },
-      {
-        "icon": "💬",
-        "name": "Claude",
-        "use": "분석·글쓰기",
-        "text": "측정 데이터 해석, 사례 정리, 보고서 초안 작성에 활용합니다."
-      },
-      {
-        "icon": "🔎",
-        "name": "Perplexity",
-        "use": "근거 검색",
-        "text": "출처가 달린 답변으로 관련 논문과 가이드라인을 빠르게 찾습니다."
-      },
-      {
-        "icon": "📒",
-        "name": "NotebookLM",
-        "use": "논문 요약",
-        "text": "여러 논문 PDF를 올려 핵심을 요약하고 질문하며 읽습니다."
-      },
-      {
-        "icon": "📊",
-        "name": "Google Sheets + AI",
-        "use": "데이터 정리",
-        "text": "측정한 관절 각도를 표로 정리하고 그래프로 비교합니다."
-      },
-      {
-        "icon": "🎨",
-        "name": "Gamma",
-        "use": "발표 자료",
-        "text": "팀 프로젝트 결과를 발표용 슬라이드로 빠르게 구성합니다."
-      }
+
+  /* ---------- 실습 AI 도구 ---------- */
+  tools: {
+    eyebrow: "AI Tools",
+    title: "🤖 실습에 쓰는 AI 도구",
+    lead: "모두 무료 또는 학교 계정으로 사용할 수 있는 도구입니다. 첫 수업 전에 가입해 두면 좋아요.",
+    items: [
+      { icon: "🧍", name: "AI 자세 추정 (MediaPipe 기반)", use: "동작 분석",
+        text: "스마트폰 영상에서 관절 위치를 자동 추출해 무릎·고관절 각도를 측정합니다." },
+      { icon: "💬", name: "Claude", use: "분석·글쓰기",
+        text: "측정 데이터 해석, 사례 정리, 보고서 초안 작성에 활용합니다." },
+      { icon: "🔎", name: "Perplexity", use: "근거 검색",
+        text: "출처가 달린 답변으로 관련 논문과 가이드라인을 빠르게 찾습니다." },
+      { icon: "📒", name: "NotebookLM", use: "논문 요약",
+        text: "여러 논문 PDF를 올려 핵심을 요약하고 질문하며 읽습니다." },
+      { icon: "📊", name: "Google Sheets + AI", use: "데이터 정리",
+        text: "측정한 관절 각도를 표로 정리하고 그래프로 비교합니다." },
+      { icon: "🎨", name: "Gamma", use: "발표 자료",
+        text: "팀 프로젝트 결과를 발표용 슬라이드로 빠르게 구성합니다." }
     ]
   },
-  "enrollment": {
-    "eyebrow": "Enrollment",
-    "title": "🎒 수강 안내 · 준비물",
-    "lead": "수업 전에 아래 항목을 준비해 주세요.",
-    "prepare": [
-      {
-        "icon": "📱",
-        "title": "스마트폰",
-        "text": "동작 촬영용. 삼각대나 거치대가 있으면 더 좋아요."
-      },
-      {
-        "icon": "💻",
-        "title": "노트북",
-        "text": "AI 도구 실습용. 충전기를 꼭 챙겨 주세요."
-      },
-      {
-        "icon": "👟",
-        "title": "편한 복장·운동화",
-        "text": "2주차 동작 분석 실습에서 직접 움직입니다."
-      },
-      {
-        "icon": "🔑",
-        "title": "AI 도구 계정",
-        "text": "위 AI 도구에 미리 가입해 두세요."
-      }
+
+  /* ---------- 수강 안내 · 준비물 ---------- */
+  enrollment: {
+    eyebrow: "Enrollment",
+    title: "🎒 수강 안내 · 준비물",
+    lead: "수업 전에 아래 항목을 준비해 주세요.",
+    prepare: [
+      { icon: "📱", title: "스마트폰",      text: "동작 촬영용. 삼각대나 거치대가 있으면 더 좋아요." },
+      { icon: "💻", title: "노트북",        text: "AI 도구 실습용. 충전기를 꼭 챙겨 주세요." },
+      { icon: "👟", title: "편한 복장·운동화", text: "2주차 동작 분석 실습에서 직접 움직입니다." },
+      { icon: "🔑", title: "AI 도구 계정",   text: "위 AI 도구에 미리 가입해 두세요." }
     ],
-    "apply": {
-      "title": "회원가입 방법",
-      "steps": [
+    apply: {
+      title: "회원가입 방법",
+      steps: [
         "[신청 기간: 2026. ○○. ○○ – ○○. ○○]",
         "아래 '회원가입'에서 정보와 비밀번호를 입력해 가입 (가입하면 '내 강의실'에 바로 로그인할 수 있어요)",
         "[정원: ○○명, 선착순]"
       ]
     }
   },
-  "admin": {
-    "salt": "ku-odyssey-2026",
-    "passwordHash": "da5e0b3db3470237bbab7a8d2411f5ce49a9cc0d79396fb0d934b8635e1c3399"
+
+  /* =====================================================================
+   *  5단계: 관리자 모드 · 공지
+   * ===================================================================== */
+
+  /* ---------- 관리자 ----------
+   *  오른쪽 위 자물쇠(🔒)를 눌러 비밀번호를 입력하면 관리자 화면이 열립니다.
+   *  비밀번호는 원문이 아니라 암호화된 값(SHA-256 해시)만 저장됩니다.
+   *  비밀번호 변경: 관리자 화면 → [설정 파일] → '관리자 비밀번호 변경'에서 바꾼 뒤
+   *  [설정 저장]에서 index.html 을 내려받아 기존 파일과 바꾸면 됩니다. */
+  admin: {
+    salt: "ku-odyssey-2026",
+    passwordHash: "da5e0b3db3470237bbab7a8d2411f5ce49a9cc0d79396fb0d934b8635e1c3399"
   },
-  "notices": [
-    {
-      "id": "n1",
-      "date": "2026-10-31",
-      "pinned": true,
-      "important": true,
-      "title": "2026 오디세이 강의 회원가입을 시작합니다",
-      "body": "11월 2일(월) 18:00까지 사이트의 '회원가입'에서 가입해 주세요. 정원이 차면 조기 마감될 수 있습니다."
-    },
-    {
-      "id": "nmvx8xjlf",
-      "date": "2026-11-01",
-      "pinned": false,
-      "important": false,
-      "popup": false,
-      "popupUntil": "",
-      "title": "공지1",
-      "body": "음"
-    },
-    {
-      "id": "nmvx8xo9f",
-      "date": "2026-11-01",
-      "pinned": false,
-      "important": false,
-      "popup": false,
-      "popupUntil": "",
-      "title": "공지2",
-      "body": "2"
-    },
-    {
-      "id": "nmvx8xrvf",
-      "date": "2026-11-01",
-      "pinned": false,
-      "important": false,
-      "popup": false,
-      "popupUntil": "",
-      "title": "공지3",
-      "body": "3"
-    },
-    {
-      "id": "nmvx8xvea",
-      "date": "2026-11-01",
-      "pinned": false,
-      "important": false,
-      "popup": false,
-      "popupUntil": "",
-      "title": "공지4",
-      "body": "4"
-    }
+
+  /* ---------- 공지사항 (관리자 화면에서 작성·수정·고정할 수 있습니다)
+   *  pinned: true → 📌 맨 위 고정 / important: true → '중요' 표시 / updated: 수정한 날짜
+   *  popup: true → 🔔 사이트 접속 시 팝업으로 띄우기 / popupUntil: "YYYY-MM-DD" 팝업 마지막 날 (비우면 계속) */
+  notices: [
+    { id: "n1", date: "2026-10-31", pinned: true, important: true,
+      title: "2026 오디세이 강의 회원가입을 시작합니다",
+      body: "11월 2일(월) 18:00까지 사이트의 '회원가입'에서 가입해 주세요. 정원이 차면 조기 마감될 수 있습니다." }
+    ,
+    { id: "nmvx8xjlf", date: "2026-11-01", pinned: false, important: false, popup: false, popupUntil: "", title: "공지1", body: "음" },
+    { id: "nmvx8xo9f", date: "2026-11-01", pinned: false, important: false, popup: false, popupUntil: "", title: "공지2", body: "2" },
+    { id: "nmvx8xrvf", date: "2026-11-01", pinned: false, important: false, popup: false, popupUntil: "", title: "공지3", body: "3" },
+    { id: "nmvx8xvea", date: "2026-11-01", pinned: false, important: false, popup: false, popupUntil: "", title: "공지4", body: "4" }
   ],
-  "backend": {
-    "url": ""
+
+  /* =====================================================================
+   *  4단계: 수강생 참여 기능
+   * ===================================================================== */
+
+  /* ---------- 데이터 저장 방식 ----------
+   *  url 을 비워 두면 '체험 모드'로 동작합니다. 투표·회원가입·출석·과제가 지금 보고 있는
+   *  브라우저에만 저장되어, 다른 학생과 공유되지 않습니다. (사이트 시연·테스트용)
+   *  실제 운영 시에는 관리자 화면 → 설정 저장 → 'Apps Script 코드'를 구글 Apps Script 로 배포하고,
+   *  발급받은 웹 앱 주소(https://script.google.com/macros/s/.../exec)를 url 에 넣으세요.
+   *  그러면 모든 데이터가 교수자의 구글 스프레드시트·드라이브에 모입니다. */
+  backend: {
+    url: ""
   },
-  "celebrate": {
-    "firstVisit": true,
-    "message": "환영합니다! 2026 오디세이 강의에 오신 것을 반겨요 🌸"
+
+  /* ---------- 첫 방문 환영 폭죽 ---------- */
+  celebrate: {
+    firstVisit: true,
+    message: "환영합니다! 2026 오디세이 강의에 오신 것을 반겨요 🌸"
   },
-  "popup": {
-    "enabled": true,
-    "delaySeconds": 2.5,
-    "badge": "회원가입 안내",
-    "title": "2026 오디세이 강의\n수강생을 모집합니다",
-    "text": "관절통을 생체역학과 AI로 풀어보는 3주 과정. 정원이 한정되어 있으니 서둘러 가입해 주세요.",
-    "deadline": "2026-11-02T18:00",
-    "highlights": [
-      "11월 3일 개강 · 매주 화요일 저녁",
-      "AI 동작 분석 실습",
-      "[정원 ○○명, 선착순]"
-    ],
-    "ctaLabel": "지금 가입하기"
+
+  /* ---------- 회원가입 안내 팝업 ---------- */
+  popup: {
+    enabled: true,
+    delaySeconds: 2.5,                      // 페이지를 연 뒤 몇 초 후에 띄울지
+    badge: "회원가입 안내",
+    title: "2026 오디세이 강의\n수강생을 모집합니다",
+    text: "관절통을 생체역학과 AI로 풀어보는 3주 과정. 정원이 한정되어 있으니 서둘러 가입해 주세요.",
+    deadline: "2026-11-02T18:00",            // 가입 마감 (남은 시간이 팝업에 표시됩니다)
+    highlights: ["11월 3일 개강 · 매주 화요일 저녁", "AI 동작 분석 실습", "[정원 ○○명, 선착순]"],
+    ctaLabel: "지금 가입하기"
   },
-  "poll": {
-    "eyebrow": "Live Poll",
-    "title": "🗳️ 가장 먼저 배우고 싶은 주제는?",
-    "lead": "한 사람당 한 표, 언제든 바꿀 수 있어요. 결과는 실시간으로 반영됩니다.",
-    "refreshSeconds": 10,
-    "options": [
-      {
-        "id": "knee",
-        "icon": "🦵",
-        "label": "무릎 골관절염과 하중"
-      },
-      {
-        "id": "hip",
-        "icon": "🦴",
-        "label": "고관절 정렬과 보행"
-      },
-      {
-        "id": "shoulder",
-        "icon": "💪",
-        "label": "어깨 통증과 근육 불균형"
-      },
-      {
-        "id": "spine",
-        "icon": "🧍",
-        "label": "척추·자세와 관절 부담"
-      },
-      {
-        "id": "ai",
-        "icon": "🤖",
-        "label": "AI 동작 분석 실습"
-      }
+
+  /* ---------- 실시간 주제 투표 ---------- */
+  poll: {
+    eyebrow: "Live Poll",
+    title: "🗳️ 가장 먼저 배우고 싶은 주제는?",
+    lead: "한 사람당 한 표, 언제든 바꿀 수 있어요. 결과는 실시간으로 반영됩니다.",
+    refreshSeconds: 10,                      // 결과 자동 새로고침 간격 (운영 모드)
+    options: [
+      { id: "knee",    icon: "🦵", label: "무릎 골관절염과 하중" },
+      { id: "hip",     icon: "🦴", label: "고관절 정렬과 보행" },
+      { id: "shoulder",icon: "💪", label: "어깨 통증과 근육 불균형" },
+      { id: "spine",   icon: "🧍", label: "척추·자세와 관절 부담" },
+      { id: "ai",      icon: "🤖", label: "AI 동작 분석 실습" }
     ]
   },
-  "application": {
-    "eyebrow": "Application",
-    "title": "📝 회원가입",
-    "lead": "아래 정보를 입력하고 가입하세요. 가입한 아이디(ID)와 비밀번호(PW)로 '내 강의실'에 로그인합니다. * 표시는 필수 항목입니다.",
-    "submitLabel": "가입하기",
-    "successTitle": "회원가입이 완료되었습니다!",
-    "successText": "이제 아이디와 비밀번호로 '내 강의실'에 로그인할 수 있어요. 11월 3일에 만나요 🌸",
-    "fields": [
-      {
-        "name": "uid",
-        "label": "아이디(ID)",
-        "type": "text",
-        "required": true,
-        "placeholder": "영문·숫자 4–20자",
-        "pattern": "^[A-Za-z0-9_]{4,20}$",
-        "message": "아이디는 영문·숫자(밑줄 _ 가능) 4–20자로 입력해 주세요."
-      },
-      {
-        "name": "pin",
-        "label": "비밀번호(PW)",
-        "type": "password",
-        "required": true,
-        "minLength": 4,
-        "placeholder": "4자 이상",
-        "message": "비밀번호를 4자 이상 입력해 주세요."
-      },
-      {
-        "name": "pin2",
-        "label": "비밀번호 확인",
-        "type": "password",
-        "required": true,
-        "match": "pin",
-        "placeholder": "한 번 더 입력",
-        "message": "비밀번호가 서로 다릅니다."
-      },
-      {
-        "name": "name",
-        "label": "이름",
-        "type": "text",
-        "required": true,
-        "placeholder": "홍길동"
-      },
-      {
-        "name": "phone",
-        "label": "휴대폰",
-        "type": "tel",
-        "required": true,
-        "placeholder": "010-1234-5678",
-        "pattern": "^01[0-9]-?[0-9]{3,4}-?[0-9]{4}$",
-        "message": "휴대폰 번호 형식(010-1234-5678)으로 입력해 주세요."
-      },
-      {
-        "name": "sid",
-        "label": "학번",
-        "type": "text",
-        "required": true,
-        "placeholder": "2026123456",
-        "pattern": "^[0-9]{8,10}$",
-        "message": "학번은 숫자 8–10자리로 입력해 주세요."
-      },
-      {
-        "name": "year",
-        "label": "학년",
-        "type": "select",
-        "required": true,
-        "options": [
-          "예과 1학년",
-          "예과 2학년",
-          "본과 1학년",
-          "본과 2학년",
-          "본과 3학년",
-          "본과 4학년",
-          "기타(교직원 등)"
-        ]
-      },
-      {
-        "name": "email",
-        "label": "이메일",
-        "type": "email",
-        "required": true,
-        "placeholder": "name@korea.ac.kr",
-        "message": "올바른 이메일 주소를 입력해 주세요."
-      },
-      {
-        "name": "ai",
-        "label": "AI 도구 사용 경험",
-        "type": "radio",
-        "required": true,
-        "options": [
-          "처음이에요",
-          "가끔 써요",
-          "자주 써요"
-        ]
-      },
-      {
-        "name": "topics",
-        "label": "관심 주제 (복수 선택)",
-        "type": "checkbox",
-        "required": true,
-        "options": [
-          "무릎",
-          "고관절",
-          "어깨",
-          "척추",
-          "AI 동작 분석"
-        ],
-        "message": "관심 주제를 1개 이상 골라 주세요."
-      },
-      {
-        "name": "agree",
-        "label": "개인정보(아이디·이름·휴대폰·학번·이메일) 수집 및 강의 운영 목적 이용에 동의합니다.",
-        "type": "agree",
-        "required": true,
-        "message": "개인정보 수집·이용에 동의해 주세요."
-      }
+
+  /* ---------- 회원가입 ----------
+   *  항목을 추가·삭제·수정할 수 있습니다.
+   *  가입하면 아이디(uid)·비밀번호(pin)·이름(name)으로 '내 강의실' 계정이 만들어집니다. (이 항목들은 지우지 마세요)
+   *  type: text | email | tel | number | select | radio | checkbox | textarea | agree | password
+   *  match: 다른 항목과 같은 값인지 확인 (비밀번호 확인용)
+   *  required: true 면 필수 항목 (빠지면 안내 메시지 표시)
+   *  pattern / minLength: 입력 형식 검사, message: 형식이 틀렸을 때 보여줄 문구 */
+  application: {
+    eyebrow: "Application",
+    title: "📝 회원가입",
+    lead: "아래 정보를 입력하고 가입하세요. 가입한 아이디(ID)와 비밀번호(PW)로 '내 강의실'에 로그인합니다. * 표시는 필수 항목입니다.",
+    submitLabel: "가입하기",
+    successTitle: "회원가입이 완료되었습니다!",
+    successText: "이제 아이디와 비밀번호로 '내 강의실'에 로그인할 수 있어요. 11월 3일에 만나요 🌸",
+    fields: [
+      { name: "uid",     label: "아이디(ID)", type: "text", required: true, placeholder: "영문·숫자 4–20자",
+        pattern: "^[A-Za-z0-9_]{4,20}$", message: "아이디는 영문·숫자(밑줄 _ 가능) 4–20자로 입력해 주세요." },
+      { name: "pin",     label: "비밀번호(PW)", type: "password", required: true, minLength: 4, placeholder: "4자 이상",
+        message: "비밀번호를 4자 이상 입력해 주세요." },
+      { name: "pin2",    label: "비밀번호 확인", type: "password", required: true, match: "pin", placeholder: "한 번 더 입력",
+        message: "비밀번호가 서로 다릅니다." },
+      { name: "name",    label: "이름",   type: "text",  required: true, placeholder: "홍길동" },
+      { name: "phone",   label: "휴대폰", type: "tel",   required: true, placeholder: "010-1234-5678",
+        pattern: "^01[0-9]-?[0-9]{3,4}-?[0-9]{4}$", message: "휴대폰 번호 형식(010-1234-5678)으로 입력해 주세요." },
+      { name: "sid",     label: "학번",   type: "text",  required: true, placeholder: "2026123456",
+        pattern: "^[0-9]{8,10}$", message: "학번은 숫자 8–10자리로 입력해 주세요." },
+      { name: "year",    label: "학년",   type: "select", required: true,
+        options: ["예과 1학년", "예과 2학년", "본과 1학년", "본과 2학년", "본과 3학년", "본과 4학년", "기타(교직원 등)"] },
+      { name: "email",   label: "이메일", type: "email", required: true, placeholder: "name@korea.ac.kr",
+        message: "올바른 이메일 주소를 입력해 주세요." },
+      { name: "ai",      label: "AI 도구 사용 경험", type: "radio", required: true,
+        options: ["처음이에요", "가끔 써요", "자주 써요"] },
+      { name: "topics",  label: "관심 주제 (복수 선택)", type: "checkbox", required: true,
+        options: ["무릎", "고관절", "어깨", "척추", "AI 동작 분석"], message: "관심 주제를 1개 이상 골라 주세요." },
+      { name: "agree",   label: "개인정보(아이디·이름·휴대폰·학번·이메일) 수집 및 강의 운영 목적 이용에 동의합니다.", type: "agree", required: true,
+        message: "개인정보 수집·이용에 동의해 주세요." }
     ]
   },
-  "portal": {
-    "eyebrow": "My Class",
-    "title": "🏫 내 강의실",
-    "lead": "학번과 비밀번호로 로그인해 출석을 체크하고 과제 파일을 제출하세요.",
-    "demoAccounts": [
-      {
-        "id": "demo1234",
-        "name": "김고대",
-        "pin": "0000"
-      }
+
+  /* ---------- 내 강의실 (로그인 · 출석 · 과제 제출) ---------- */
+  portal: {
+    eyebrow: "My Class",
+    title: "🏫 내 강의실",
+    lead: "학번과 비밀번호로 로그인해 출석을 체크하고 과제 파일을 제출하세요.",
+    // 체험 모드에서만 쓰이는 테스트 계정 (운영 모드에서는 스프레드시트의 '학생' 시트로 로그인합니다)
+    demoAccounts: [
+      { id: "demo1234", name: "김고대", pin: "0000" }
     ],
-    "attendance": {
-      "openBeforeMin": 30,
-      "closeAfterMin": 30,
-      "useCode": false
+    attendance: {
+      openBeforeMin: 30,        // 수업 시작 몇 분 전부터 출석 가능
+      closeAfterMin: 30,        // 수업 종료 몇 분 후까지 출석 가능
+      useCode: false            // true: 수업 중 교수자가 알려주는 출석 코드 입력 필요 (운영 모드, '출석코드' 시트)
     },
-    "upload": {
-      "maxMB": 10,
-      "accept": ".pdf,.docx,.pptx,.hwp,.hwpx,.zip,.jpg,.jpeg,.png"
+    upload: {
+      maxMB: 10,
+      accept: ".pdf,.docx,.pptx,.hwp,.hwpx,.zip,.jpg,.jpeg,.png"
     }
   },
-  "quiz": {
-    "eyebrow": "Live Quiz",
-    "title": "실시간 퀴즈",
-    "lead": "교수자 화면의 QR 코드를 찍거나 PIN을 입력해 입장하세요. 빨리 맞힐수록 점수가 높아요!",
-    "joinUrl": "",
-    "pollSeconds": 1.5,
-    "ai": {
-      "model": "claude-sonnet-4-5"
-    },
-    "sets": [
+
+  /* ---------- 실시간 퀴즈 (Kahoot·Socrative 방식) ----------
+   *  교수자: '참여하기' 맨 아래 [교수자: 퀴즈 진행] → 관리자 비밀번호 → 퀴즈 선택·AI 출제 → 시작
+   *  학생  : 화면의 QR 코드를 휴대폰 카메라로 찍거나 PIN 6자리를 입력해 입장
+   *  joinUrl : 학생이 QR로 들어올 사이트 주소. 비워 두면 지금 열린 주소를 씁니다.
+   *            (내 컴퓨터에서 index.html 을 직접 연 경우 휴대폰이 접속할 수 없으니, 배포한 주소를 적어 주세요)
+   *  questions 형식:
+   *    4지선다 { type: "mc", text: "문제", options: ["보기1","보기2","보기3","보기4"], answer: 정답번호(0부터), time: 제한초, explain: "해설" }
+   *    O/X    { type: "ox", text: "문제", options: ["O","X"], answer: 0(O) 또는 1(X), time: 제한초, explain: "해설" } */
+  quiz: {
+    eyebrow: "Live Quiz",
+    title: "실시간 퀴즈",
+    lead: "교수자 화면의 QR 코드를 찍거나 PIN을 입력해 입장하세요. 빨리 맞힐수록 점수가 높아요!",
+    joinUrl: "",
+    pollSeconds: 1.5,                 // 운영 모드에서 화면을 새로 고치는 간격(초)
+    ai: { model: "claude-sonnet-4-5" }, // 'API로 바로 생성'에 쓰는 Claude 모델 이름 (docs.claude.com 에서 최신 이름 확인)
+    sets: [
       {
-        "id": "week1",
-        "title": "1주차 복습 · 관절과 힘의 언어",
-        "questions": [
-          {
-            "type": "mc",
-            "time": 20,
-            "text": "평지 보행 중 무릎 관절에 걸리는 접촉력(관절 반력)은 대략 체중의 몇 배일까요?",
-            "options": [
-              "약 0.5배",
-              "약 1배",
-              "약 2–3배",
-              "약 10배"
-            ],
-            "answer": 2,
-            "explain": "보행 시 무릎 접촉력은 근육 수축력이 더해져 체중의 약 2–3배에 이르며, 계단·달리기에서는 더 커집니다."
-          },
-          {
-            "type": "mc",
-            "time": 20,
-            "text": "내반슬(O다리) 정렬에서 하중이 더 많이 실려 골관절염이 잘 생기는 부위는?",
-            "options": [
-              "무릎 내측 구획",
-              "무릎 외측 구획",
-              "슬개대퇴관절",
-              "하중이 고르게 분산된다"
-            ],
-            "answer": 0,
-            "explain": "내반 정렬에서는 하중선이 무릎 안쪽으로 지나가 내측 구획에 압력이 집중됩니다."
-          },
-          {
-            "type": "ox",
-            "time": 15,
-            "text": "관절 연골에는 혈관이 없어 손상되면 스스로 회복하기 어렵다.",
-            "options": [
-              "O",
-              "X"
-            ],
-            "answer": 0,
-            "explain": "관절 연골은 무혈관 조직으로 영양을 관절액 확산에 의존해 재생 능력이 낮습니다."
-          },
-          {
-            "type": "mc",
-            "time": 20,
-            "text": "관절에 작용하는 모멘트(돌림힘)를 구하는 식으로 옳은 것은?",
-            "options": [
-              "힘 ÷ 거리",
-              "힘 × 모멘트 팔(회전축까지의 수직 거리)",
-              "질량 × 가속도",
-              "압력 × 면적"
-            ],
-            "answer": 1,
-            "explain": "모멘트 = 힘 × 모멘트 팔. 같은 힘이라도 회전축에서 멀수록 관절에 큰 돌림힘이 걸립니다."
-          },
-          {
-            "type": "mc",
-            "time": 25,
-            "text": "관절 연골에 일정한 하중을 계속 가하면 시간이 지나며 변형이 서서히 늘어납니다. 이 점탄성 현상은?",
-            "options": [
-              "소성 변형",
-              "피로 파괴",
-              "크리프(creep)",
-              "공명"
-            ],
-            "answer": 2,
-            "explain": "일정 하중에서 변형이 시간에 따라 증가하는 현상을 크리프라고 하며, 연골의 대표적 점탄성 특성입니다."
-          }
+        id: "week1",
+        title: "1주차 복습 · 관절과 힘의 언어",
+        questions: [
+          { type: "mc", time: 20, text: "평지 보행 중 무릎 관절에 걸리는 접촉력(관절 반력)은 대략 체중의 몇 배일까요?",
+            options: ["약 0.5배", "약 1배", "약 2–3배", "약 10배"], answer: 2,
+            explain: "보행 시 무릎 접촉력은 근육 수축력이 더해져 체중의 약 2–3배에 이르며, 계단·달리기에서는 더 커집니다." },
+          { type: "mc", time: 20, text: "내반슬(O다리) 정렬에서 하중이 더 많이 실려 골관절염이 잘 생기는 부위는?",
+            options: ["무릎 내측 구획", "무릎 외측 구획", "슬개대퇴관절", "하중이 고르게 분산된다"], answer: 0,
+            explain: "내반 정렬에서는 하중선이 무릎 안쪽으로 지나가 내측 구획에 압력이 집중됩니다." },
+          { type: "ox", time: 15, text: "관절 연골에는 혈관이 없어 손상되면 스스로 회복하기 어렵다.",
+            options: ["O", "X"], answer: 0,
+            explain: "관절 연골은 무혈관 조직으로 영양을 관절액 확산에 의존해 재생 능력이 낮습니다." },
+          { type: "mc", time: 20, text: "관절에 작용하는 모멘트(돌림힘)를 구하는 식으로 옳은 것은?",
+            options: ["힘 ÷ 거리", "힘 × 모멘트 팔(회전축까지의 수직 거리)", "질량 × 가속도", "압력 × 면적"], answer: 1,
+            explain: "모멘트 = 힘 × 모멘트 팔. 같은 힘이라도 회전축에서 멀수록 관절에 큰 돌림힘이 걸립니다." },
+          { type: "mc", time: 25, text: "관절 연골에 일정한 하중을 계속 가하면 시간이 지나며 변형이 서서히 늘어납니다. 이 점탄성 현상은?",
+            options: ["소성 변형", "피로 파괴", "크리프(creep)", "공명"], answer: 2,
+            explain: "일정 하중에서 변형이 시간에 따라 증가하는 현상을 크리프라고 하며, 연골의 대표적 점탄성 특성입니다." }
         ]
       }
     ]
   },
-  "faq": {
-    "eyebrow": "FAQ",
-    "title": "💬 자주 묻는 질문",
-    "items": [
-      {
-        "q": "공학이나 물리 배경이 없어도 들을 수 있나요?",
-        "a": "네. 필요한 역학 개념은 1주차에 의학적 예시로 처음부터 설명합니다. 고등학교 수준의 물리 지식이면 충분합니다."
-      },
-      {
-        "q": "AI 도구를 한 번도 써 본 적이 없어요.",
-        "a": "괜찮습니다. 각 도구는 수업 중에 사용법부터 함께 따라 하며 익힙니다."
-      },
-      {
-        "q": "유료 AI 서비스에 가입해야 하나요?",
-        "a": "아니요. 실습은 모두 무료 기능 범위에서 진행합니다."
-      },
-      {
-        "q": "환자 정보나 영상은 어떻게 다루나요?",
-        "a": "사례는 모두 익명화된 자료를 사용하며, AI 도구에 개인 식별 정보를 입력하지 않는 원칙을 첫 시간에 안내합니다."
-      },
-      {
-        "q": "결석하면 어떻게 하나요?",
-        "a": "3주 과정이라 한 번의 결석도 영향이 큽니다. 부득이한 경우 사전에 교수자에게 알려 주시면 보충 자료를 안내합니다."
-      }
+
+  /* ---------- FAQ ---------- */
+  faq: {
+    eyebrow: "FAQ",
+    title: "💬 자주 묻는 질문",
+    items: [
+      { q: "공학이나 물리 배경이 없어도 들을 수 있나요?",
+        a: "네. 필요한 역학 개념은 1주차에 의학적 예시로 처음부터 설명합니다. 고등학교 수준의 물리 지식이면 충분합니다." },
+      { q: "AI 도구를 한 번도 써 본 적이 없어요.",
+        a: "괜찮습니다. 각 도구는 수업 중에 사용법부터 함께 따라 하며 익힙니다." },
+      { q: "유료 AI 서비스에 가입해야 하나요?",
+        a: "아니요. 실습은 모두 무료 기능 범위에서 진행합니다." },
+      { q: "환자 정보나 영상은 어떻게 다루나요?",
+        a: "사례는 모두 익명화된 자료를 사용하며, AI 도구에 개인 식별 정보를 입력하지 않는 원칙을 첫 시간에 안내합니다." },
+      { q: "결석하면 어떻게 하나요?",
+        a: "3주 과정이라 한 번의 결석도 영향이 큽니다. 부득이한 경우 사전에 교수자에게 알려 주시면 보충 자료를 안내합니다." }
     ]
   },
-  "instructor": {
-    "photo": "",
-    "initials": "KU",
-    "name": "[교수 성명]",
-    "position": "[직위] · 고려대학교 의과대학 의학과",
-    "bio": "[교수자 소개 문구를 입력하세요. 연구 분야, 임상 경력, 강의 철학 등을 2–3문장으로 적어 주세요.]",
-    "interests": [
-      "관절 생체역학",
-      "골관절염",
-      "보행 분석",
-      "AI 활용 교육"
-    ],
-    "contacts": [
-      {
-        "icon": "✉️",
-        "label": "이메일",
-        "value": "[email@korea.ac.kr]",
-        "link": "mailto:[email@korea.ac.kr]"
-      },
-      {
-        "icon": "📞",
-        "label": "전화",
-        "value": "[02-0000-0000]"
-      },
-      {
-        "icon": "🏢",
-        "label": "연구실",
-        "value": "[의과대학 ○○관 ○○○호]"
-      },
-      {
-        "icon": "🕑",
-        "label": "면담 시간",
-        "value": "[수 14:00–16:00, 사전 예약]"
-      }
+
+  /* ---------- 교수자 (페이지 맨 아래 푸터) ---------- */
+  instructor: {
+    // 사진: 관리자 화면 → 콘텐츠 편집 → 교수자 → [사진 올리기] 로 넣으면 index.html 안에 함께 저장됩니다.
+    //       (사진 주소 URL 을 적어도 됩니다. 비워 두면 이니셜이 표시됩니다)
+    photo: "",
+    initials: "KU",
+    name: "[교수 성명]",
+    position: "[직위] · 고려대학교 의과대학 의학과",
+    bio: "[교수자 소개 문구를 입력하세요. 연구 분야, 임상 경력, 강의 철학 등을 2–3문장으로 적어 주세요.]",
+    interests: ["관절 생체역학", "골관절염", "보행 분석", "AI 활용 교육"],
+    contacts: [
+      { icon: "✉️", label: "이메일",   value: "[email@korea.ac.kr]", link: "mailto:[email@korea.ac.kr]" },
+      { icon: "📞", label: "전화",     value: "[02-0000-0000]" },
+      { icon: "🏢", label: "연구실",   value: "[의과대학 ○○관 ○○○호]" },
+      { icon: "🕑", label: "면담 시간", value: "[수 14:00–16:00, 사전 예약]" }
     ]
-  },
-  "__savedAt": "2026-11-01T03:06:12.435Z"
+  }
 };
+
+/* 이 파일이 만들어진 시각 - 브라우저에 남은 예전 수정본보다 새 파일을 우선 적용 */
+window.SITE_CONFIG.__savedAt = "2026-11-01T03:17:36.000Z";
 </script>
 <script id="app-js" data-bundle="1">
 /* =====================================================================
@@ -3417,6 +3149,20 @@ window.SITE_CONFIG = {
     if (panel) $(".admin__main", panel).insertAdjacentHTML("afterbegin", `<div class="admin__alert admin__alert--info">💾 저장 중… 잠시 후 새로고침됩니다.</div>`);
     setTimeout(() => location.reload(), 600);
   }
+  // 콘텐츠를 저장할 때마다 버전 끝자리 +1 (예: v1.0.0 → v1.0.1)
+  function bumpVersion(cfg) {
+    cfg.site = cfg.site || {};
+    const m = String(cfg.site.version || "").trim().match(/^(v?)(\d+)\.(\d+)\.(\d+)$/i);
+    if (!m) return cfg.site.version || "";
+    cfg.site.version = `${m[1]}${m[2]}.${m[3]}.${Number(m[4]) + 1}`;
+    return cfg.site.version;
+  }
+  function showVersion(v) {
+    window.SITE_CONFIG.site.version = v; if (work && work.site) work.site.version = v;
+    const el = $("#brand-ver"); if (el) { el.textContent = v || ""; el.hidden = !v; }
+  }
+  window.__bumpVersion = (cfg) => { const v = bumpVersion(cfg); showVersion(v); return v; };
+
   function saveOverride(cfg, reload, returnTab) {
     store.set("ab26.configOverride", { savedAt: new Date().toISOString(), config: cfg });
     dirty = false;
@@ -3485,6 +3231,7 @@ window.SITE_CONFIG = {
     const all = work.notices || [];
     if (REMOTE) await remote.post({ action: "adminSaveNotices", key: session.key, notices: all });
     const cfg = clone(window.SITE_CONFIG); cfg.notices = clone(all);
+    showVersion(bumpVersion(cfg));   // 공지 변경도 콘텐츠 수정 → 버전 +1
     saveOverride(cfg, false);
     window.SITE_CONFIG.notices = clone(all);
     renderNotices(all, true);
@@ -3785,7 +3532,14 @@ window.SITE_CONFIG = ${JSON.stringify(cfg, null, 2).replace(/<\//g, "<\\/")};
       case "quiz": closeAdmin(); return window.__QUIZ && window.__QUIZ.openHost();
       case "logout":
         session = null; store.sset(P + "admin", null); setLockState(); dirty = false; closeAdmin(); return toast("관리자 모드에서 나왔습니다.");
-      case "save": { const w = clone(work); delete w.__remoteNotices; saveOverride(w, true, "content"); return; }
+      case "save": {
+        const w = clone(work); delete w.__remoteNotices;
+        // 버전 칸을 직접 고친 경우는 그 값을 그대로 쓰고, 아니면 자동으로 +1
+        const manual = (w.site && w.site.version) !== (window.SITE_CONFIG.site && window.SITE_CONFIG.site.version);
+        const v = manual ? w.site.version : bumpVersion(w);
+        if (v) toast(`저장했습니다 · 버전 ${v}`);
+        saveOverride(w, true, "content"); return;
+      }
       case "revert": work = clone(window.SITE_CONFIG); dirty = false; return tabContent();
       case "ncancel": editNotice = null; return tabNotice();
       case "r-add": rosterDraft.push({ id: "", name: "", pin: randPin() }); tabRoster().then(() => { const ins = $$(".tbl--edit input[data-k=id]", panel); ins.at(-1)?.focus(); }); return;
@@ -6375,6 +6129,7 @@ var qrcode = function() {
     let ov = store.get("ab26.configOverride", null);
     const cfg = ov && ov.config ? ov.config : clone(window.SITE_CONFIG);
     cfg.quiz = cfg.quiz || clone(Q); cfg.quiz.sets = clone(sets);
+    if (window.__bumpVersion) window.__bumpVersion(cfg);   // 퀴즈 문항 저장도 콘텐츠 수정 → 버전 +1
     store.set("ab26.configOverride", { savedAt: new Date().toISOString(), config: cfg });
   }
 
