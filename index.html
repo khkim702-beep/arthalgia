@@ -1169,6 +1169,10 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 20px; position: relative; z
 .pager__btn:hover:not(:disabled) { background: var(--pink-50); color: var(--ink); }
 .pager__btn.is-on { background: var(--grad); color: #fff; border-color: transparent; }
 .pager__btn:disabled { opacity: .35; cursor: default; }
+/* 헤더 버전 표시 */
+.brand__ver { align-self: center; margin-left: 2px; font-size: 11px; font-weight: 700; letter-spacing: .02em; line-height: 1; color: var(--lav-600); background: var(--lav-100); border: 1px solid var(--lav-200); padding: 4px 8px; border-radius: 999px; white-space: nowrap; }
+.brand__ver[hidden] { display: none; }
+@media (max-width: 640px) { .brand__ver { font-size: 10px; padding: 3px 6px; } }
 
 </style>
 </head>
@@ -1182,6 +1186,7 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 20px; position: relative; z
           <strong id="brand-title"></strong>
           <small id="brand-sub"></small>
         </span>
+        <span class="brand__ver" id="brand-ver"></span>
       </a>
       <button class="menu-toggle" aria-label="메뉴 열기" aria-expanded="false" aria-controls="nav">
         <span></span><span></span><span></span>
@@ -1231,6 +1236,7 @@ window.SITE_CONFIG = {
     englishTitle: "Biomechanics of Arthritis",
     university: "고려대학교",
     department: "의과대학 의학과",
+    version: "v1.0.0",            // 헤더 제목 옆 버전 표시 (비우면 숨김)
     footerNote: "본 사이트는 강의 운영을 위한 안내 페이지입니다.",
     // 페이지 맨 아래 저작권 문구
     copyright: "Copyright 2026 ⓒ AI WEB, All Rights Reserved. | 김기훈(고려대학교)"
@@ -1633,7 +1639,7 @@ window.SITE_CONFIG = {
 };
 
 /* 이 파일이 만들어진 시각 - 브라우저에 남은 예전 수정본보다 새 파일을 우선 적용 */
-window.SITE_CONFIG.__savedAt = "2026-11-01T02:40:17.000Z";
+window.SITE_CONFIG.__savedAt = "2026-11-01T02:59:42.000Z";
 </script>
 <script id="app-js" data-bundle="1">
 /* =====================================================================
@@ -1668,6 +1674,8 @@ window.SITE_CONFIG.__savedAt = "2026-11-01T02:40:17.000Z";
   document.title = `${C.site.title} | ${C.site.university} ${C.site.department}`;
   $("#brand-title").textContent = C.site.title;
   $("#brand-sub").textContent = `${C.site.university} ${C.site.department}`;
+  const ver = $("#brand-ver");
+  if (ver) { ver.textContent = C.site.version || ""; ver.hidden = !C.site.version; }
   $("#nav").innerHTML = list(C.nav, (n) => `<a href="#${esc(n.id)}" data-scroll>${esc(n.label)}</a>`);
 
   /* ---------- 첫 화면 + 한눈에 보는 정보 ---------- */
@@ -3045,7 +3053,7 @@ window.SITE_CONFIG.__savedAt = "2026-11-01T02:40:17.000Z";
     ["backend", "데이터 저장(운영 모드)"]
   ];
   const KEY = {
-    title: "제목", englishTitle: "영문 제목", university: "대학", department: "학과", footerNote: "하단 문구", copyright: "저작권 문구(푸터)", badge: "배지",
+    title: "제목", englishTitle: "영문 제목", university: "대학", department: "학과", footerNote: "하단 문구", version: "버전 표시", copyright: "저작권 문구(푸터)", badge: "배지",
     subtitle: "부제", description: "설명", applyLabel: "신청 버튼 글자", applyUrl: "외부 신청 링크", curriculumLabel: "커리큘럼 버튼 글자",
     icon: "아이콘", label: "이름", value: "내용", sub: "보조 문구", eyebrow: "영문 소제목", lead: "안내 문구", items: "항목",
     number: "숫자", suffix: "단위", slides: "슬라이드", text: "본문", startDate: "첫 수업일 (YYYY-MM-DD)", time: "수업 시간",
