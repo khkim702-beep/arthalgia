@@ -1173,6 +1173,19 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 20px; position: relative; z
 .brand__ver { align-self: center; margin-left: 2px; font-size: 11px; font-weight: 700; letter-spacing: .02em; line-height: 1; color: var(--lav-600); background: var(--lav-100); border: 1px solid var(--lav-200); padding: 4px 8px; border-radius: 999px; white-space: nowrap; }
 .brand__ver[hidden] { display: none; }
 @media (max-width: 640px) { .brand__ver { font-size: 10px; padding: 3px 6px; } }
+.grid--2 { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 640px) { .grid--2 { grid-template-columns: 1fr; } }
+.qai__row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0 10px; }
+@media (max-width: 640px) { .qai__row2 { grid-template-columns: 1fr; } }
+/* API 키 설정 */
+.apic__head { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 8px; }
+.apic__head h3 { margin: 0 !important; }
+.apic__key { display: flex; gap: 6px; }
+.apic__key input { flex: 1; }
+.apic__eye { flex: none; width: 40px; border-radius: 10px; border: 1.5px solid var(--lav-200); background: #fff; cursor: pointer; }
+.apic__msg { margin: 6px 0 0; font-size: 13px; color: #2f8a5b; min-height: 1em; overflow-wrap: anywhere; }
+.apic__msg.is-bad { color: #c0446f; }
+.apic__pref { margin-bottom: 4px; }
 
 </style>
 </head>
@@ -1236,7 +1249,7 @@ window.SITE_CONFIG = {
     englishTitle: "Biomechanics of Arthritis",
     university: "고려대학교",
     department: "의과대학 의학과",
-    version: "v1.0.1",            // 헤더 제목 옆 버전 표시 (비우면 숨김). 관리자 화면에서 콘텐츠·공지·퀴즈를 저장할 때마다 끝자리가 1씩 자동으로 올라갑니다
+    version: "v1.0.5",            // 헤더 제목 옆 버전 표시 (비우면 숨김). 관리자 화면에서 콘텐츠·공지·퀴즈를 저장할 때, 그리고 사이트 코드를 고칠 때마다 끝자리가 1씩 올라갑니다
     footerNote: "본 사이트는 강의 운영을 위한 안내 페이지입니다.",
     // 페이지 맨 아래 저작권 문구
     copyright: "Copyright 2026 ⓒ AI WEB, All Rights Reserved. | 김기훈(고려대학교)"
@@ -1256,9 +1269,9 @@ window.SITE_CONFIG = {
   hero: {
     badge: "2026 오디세이 강의",
     title: "🦴 관절염 생체역학",
-    subtitle: "관절통과 생체역학 불균형",
+    subtitle: "관절의 통증에 영향을 주는 생역학적 불균형",
     description:
-      "무릎·고관절·어깨의 통증은 왜 생길까요? 관절에 걸리는 힘과 움직임의 불균형을 읽어내고, AI 도구로 직접 동작을 분석하며 관절염의 원인과 해법을 함께 탐구하는 3주 과정입니다.",
+      "관절의 생역학적 불균형이 통증에 미치는 영향을 알아봅니다. 어깨, 무릎, 발목과 발 관절을 차례로 다루며 강의와 증례토론, 일반토론으로 진행하는 3주 과정입니다.",
     // 회원가입 버튼: 외부 가입 링크(구글폼 등)를 쓰려면 applyUrl 에 넣으세요. 비워 두면 사이트 안의 '회원가입'으로 이동합니다.
     applyLabel: "회원가입",
     applyUrl: "",
@@ -1269,7 +1282,7 @@ window.SITE_CONFIG = {
   overview: [
     { icon: "📅", label: "일정",      value: "2026. 11. 3 – 11. 17",     sub: "총 3주" },
     { icon: "⏰", label: "시간",      value: "매주 화요일 19:00–21:00",   sub: "회당 2시간" },
-    { icon: "💻", label: "수업 방식", value: "대면 강의 + AI 실습",       sub: "[의과대학 ○○○호]" },
+    { icon: "💬", label: "수업 방식", value: "강의 · 증례토론 · 일반토론", sub: "[의과대학 ○○○호]" },
     { icon: "🎓", label: "수강 대상", value: "의학과 학생",               sub: "관심 있는 교직원 환영" }
   ],
 
@@ -1278,29 +1291,29 @@ window.SITE_CONFIG = {
     eyebrow: "At a glance",
     title: "📊 숫자로 보는 강의",
     items: [
-      { number: 3,  suffix: "주",  label: "집중 과정" },
-      { number: 6,  suffix: "개",  label: "실습 AI 도구" },
-      { number: 12, suffix: "권",  label: "교수자 저술" },     // 예시 값
-      { number: 20, suffix: "년+", label: "강의 경력" }        // 예시 값
+      { number: 3, suffix: "주",   label: "집중 과정" },
+      { number: 3, suffix: "부위", label: "어깨 · 무릎 · 발목과 발" },
+      { number: 5, suffix: "개",   label: "강의 목표" },
+      { number: 2, suffix: "권",   label: "교재와 참고자료" }
     ]
   },
 
-  /* ---------- 강의 장점 슬라이드 ---------- */
+  /* ---------- 강의 목표 (좌우로 넘겨 보는 슬라이드) ---------- */
   strengths: {
-    eyebrow: "Why this course",
-    title: "✨ 이 강의가 특별한 이유",
-    lead: "좌우로 넘겨 보세요.",
+    eyebrow: "Learning objectives",
+    title: "🎯 강의 목표",
+    lead: "이 강의를 마치면 다음을 설명할 수 있어요. 좌우로 넘겨 보세요.",
     slides: [
-      { icon: "🦴", title: "통증을 '힘'으로 읽는 관점",
-        text: "관절통을 단순한 염증이 아니라 하중·정렬·근력의 불균형 문제로 바라보는 생체역학적 사고를 익힙니다." },
-      { icon: "🤖", title: "AI와 함께하는 동작 분석",
-        text: "스마트폰 영상과 AI 자세 추정 도구로 보행·스쿼트 동작을 직접 분석하고 관절 각도를 측정합니다." },
-      { icon: "🩺", title: "임상 사례 중심 토론",
-        text: "실제 환자 사례(익명화)를 바탕으로 통증의 역학적 원인을 추론하고 치료·재활 방향을 토론합니다." },
-      { icon: "📚", title: "근거 기반 학습",
-        text: "AI 검색·요약 도구로 최신 논문을 빠르게 찾아 읽고, 근거를 비판적으로 평가하는 법을 연습합니다." },
-      { icon: "🤝", title: "소규모 팀 프로젝트",
-        text: "3–4명이 팀을 이루어 하나의 관절 문제를 정하고, 분석부터 해결안 발표까지 함께 완성합니다." }
+      { icon: "🌍", title: "지면 반발력과 하지 관절",
+        text: "지면 반발력이 하지 관절에 어떻게 작용하는지 설명할 수 있다." },
+      { icon: "🦶", title: "발목·발 관절의 움직임",
+        text: "발목, 발 관절에서 일어나는 움직임을 설명할 수 있다." },
+      { icon: "🦵", title: "하지 근육의 작용",
+        text: "하지 근육이 무릎, 발목 관절에 어떻게 작용하는지 설명할 수 있다." },
+      { icon: "💪", title: "어깨 관절의 움직임",
+        text: "어깨 관절의 움직임을 설명할 수 있다." },
+      { icon: "🛡️", title: "어깨 관절의 안정성",
+        text: "어깨 관절의 안정성을 유지하는 요소를 설명할 수 있다." }
     ]
   },
 
@@ -1315,67 +1328,68 @@ window.SITE_CONFIG = {
   curriculum: {
     eyebrow: "Curriculum",
     title: "📚 커리큘럼",
-    lead: "3주 동안 이론 → 분석 → 적용 순서로 진행됩니다. 주차를 누르면 상세 내용이 펼쳐집니다.",
+    lead: "3주 동안 어깨 → 무릎 → 발목과 발 순서로, 관절의 생역학적 불균형이 통증에 미치는 영향을 다룹니다. 주차를 누르면 상세 내용이 펼쳐집니다.",
     startDate: "2026-11-03",          // 첫 수업 (화요일)
     time: "19:00 – 21:00",
     location: "[의과대학 본관 ○○○호]",
     weeks: [
       {
-        tag: "1주차", theme: "이론", title: "관절과 힘의 언어",
-        summary: "관절통을 '힘의 불균형'으로 읽기 위한 기본 개념을 다집니다.",
+        tag: "1주차", theme: "어깨", title: "어깨관절의 불균형과 통증",
+        summary: "어깨 관절의 움직임과 안정성을 유지하는 요소를 이해하고, 불균형이 통증으로 이어지는 과정을 살펴봅니다.",
         topics: [
-          "강의 오리엔테이션 · AI 도구 사용 원칙(개인정보 보호)",
-          "무릎·고관절·어깨 관절의 해부와 운동학",
-          "하중, 모멘트, 관절 반력의 개념",
-          "관절통과 생체역학 불균형: 정렬·근력·하중의 삼각관계"
+          "어깨 관절의 움직임",
+          "어깨 관절의 안정성을 유지하는 요소",
+          "증례토론 · 어깨관절의 불균형과 통증",
+          "일반토론"
         ],
         videos: [
-          { title: "무릎 관절 생체역학 개요", url: "https://www.youtube.com/results?search_query=knee+joint+biomechanics" },
-          { title: "관절 반력(Joint reaction force) 이해하기", url: "https://www.youtube.com/results?search_query=joint+reaction+force+biomechanics" }
+          { title: "어깨 관절의 생역학 (Shoulder biomechanics)", url: "https://www.youtube.com/results?search_query=shoulder+joint+biomechanics" },
+          { title: "어깨 관절의 안정성 (Shoulder stability)", url: "https://www.youtube.com/results?search_query=glenohumeral+joint+stability" }
         ],
+        // 과제 예시입니다. 필요 없으면 title 을 비워 두면 '과제 없음'으로 표시됩니다.
         assignment: {
-          title: "과제 1 · 나의 관절 관찰 노트",
-          description: "일상 동작(계단 오르기, 쪼그려 앉기 등) 하나를 골라 어느 관절에 어떤 힘이 걸리는지 그림과 함께 1쪽 이내로 정리하세요. AI 도구 활용 시 사용한 프롬프트를 함께 적어 주세요.",
+          title: "1주차 과제 · 어깨 통증 증례 정리",
+          description: "수업에서 다룬 어깨 통증 증례 1개를 골라, 어깨 관절의 움직임과 안정성 측면에서 통증의 원인을 1쪽 이내로 정리하세요.",
           due: "2026-11-09T23:59",
           submitUrl: ""
         }
       },
       {
-        tag: "2주차", theme: "분석", title: "AI로 보는 움직임",
-        summary: "스마트폰 영상과 AI 자세 추정 도구로 동작을 직접 분석합니다.",
+        tag: "2주차", theme: "무릎", title: "무릎관절의 불균형과 통증",
+        summary: "지면 반발력과 하지 근육이 무릎 관절에 작용하는 방식을 이해하고, 불균형이 통증으로 이어지는 과정을 살펴봅니다.",
         topics: [
-          "AI 자세 추정(MediaPipe 기반)으로 보행·스쿼트 촬영 및 관절 각도 측정",
-          "무릎 내반·외반, 골반 기울기 등 정렬 이상 찾기",
-          "측정값을 표·그래프로 정리하고 해석하기",
-          "Perplexity·NotebookLM으로 관련 논문 탐색과 근거 정리"
+          "지면 반발력이 하지 관절에 작용하는 방식",
+          "하지 근육이 무릎 관절에 작용하는 방식",
+          "증례토론 · 무릎관절의 불균형과 통증",
+          "일반토론"
         ],
         videos: [
-          { title: "AI 자세 추정(Pose estimation) 소개", url: "https://www.youtube.com/results?search_query=mediapipe+pose+estimation+gait+analysis" },
-          { title: "보행 분석의 기초", url: "https://www.youtube.com/results?search_query=gait+analysis+basics" }
+          { title: "지면 반발력과 하지 관절 (Ground reaction force)", url: "https://www.youtube.com/results?search_query=ground+reaction+force+knee+biomechanics" },
+          { title: "무릎 관절의 생역학 (Knee biomechanics)", url: "https://www.youtube.com/results?search_query=knee+joint+biomechanics" }
         ],
         assignment: {
-          title: "과제 2 · 동작 분석 리포트",
-          description: "팀원 1명의 스쿼트 또는 보행 영상을 AI 도구로 분석하고, 측정한 관절 각도와 해석을 2쪽 이내 리포트로 제출하세요. (얼굴이 드러나지 않게 촬영)",
+          title: "2주차 과제 · 무릎 통증 증례 정리",
+          description: "수업에서 다룬 무릎 통증 증례 1개를 골라, 지면 반발력과 하지 근육의 작용 측면에서 통증의 원인을 1쪽 이내로 정리하세요.",
           due: "2026-11-16T23:59",
           submitUrl: ""
         }
       },
       {
-        tag: "3주차", theme: "적용", title: "통증에서 해법으로",
-        summary: "사례 토론과 팀 프로젝트 발표로 배운 내용을 임상 문제에 적용합니다.",
+        tag: "3주차", theme: "발목·발", title: "발목 발의 불균형과 통증",
+        summary: "발목과 발 관절에서 일어나는 움직임과 하지 근육의 작용을 이해하고, 불균형이 통증으로 이어지는 과정을 살펴봅니다.",
         topics: [
-          "골관절염 환자 사례 토론 (익명화 자료)",
-          "보조기·테이핑·운동 처방의 생체역학적 근거",
-          "팀 프로젝트 발표 및 피드백",
-          "강의 마무리 · 수료"
+          "발목, 발 관절에서 일어나는 움직임",
+          "하지 근육이 발목 관절에 작용하는 방식",
+          "증례토론 · 발목 발의 불균형과 통증",
+          "일반토론"
         ],
         videos: [
-          { title: "무릎 골관절염과 하중 조절", url: "https://www.youtube.com/results?search_query=knee+osteoarthritis+biomechanics+load" }
+          { title: "발목과 발의 생역학 (Ankle and foot biomechanics)", url: "https://www.youtube.com/results?search_query=ankle+foot+biomechanics" }
         ],
         assignment: {
-          title: "최종 과제 · 팀 프로젝트 발표 자료",
-          description: "팀별로 선택한 관절 문제의 분석 결과와 해결안을 발표 자료(10분 분량)로 제출하세요. 발표 전날까지 업로드해 주세요.",
-          due: "2026-11-16T18:00",
+          title: "3주차 과제 · 발목·발 통증 증례 정리",
+          description: "수업에서 다룬 발목·발 통증 증례 1개를 골라, 발목·발 관절의 움직임과 하지 근육의 작용 측면에서 통증의 원인을 1쪽 이내로 정리하세요.",
+          due: "2026-11-23T23:59",
           submitUrl: ""
         }
       }
@@ -1390,24 +1404,16 @@ window.SITE_CONFIG = {
     lead: "날짜를 누르면 그날 수업 내용과 과제 마감을 확인할 수 있어요."
   },
 
-  /* ---------- 실습 AI 도구 ---------- */
+  /* ---------- 교재와 참고자료 ---------- */
   tools: {
-    eyebrow: "AI Tools",
-    title: "🤖 실습에 쓰는 AI 도구",
-    lead: "모두 무료 또는 학교 계정으로 사용할 수 있는 도구입니다. 첫 수업 전에 가입해 두면 좋아요.",
+    eyebrow: "Textbooks",
+    title: "📖 교재와 참고자료",
+    lead: "아래 교재의 Ankle and foot, Knee, Shoulder 부분을 참고합니다.",
     items: [
-      { icon: "🧍", name: "AI 자세 추정 (MediaPipe 기반)", use: "동작 분석",
-        text: "스마트폰 영상에서 관절 위치를 자동 추출해 무릎·고관절 각도를 측정합니다." },
-      { icon: "💬", name: "Claude", use: "분석·글쓰기",
-        text: "측정 데이터 해석, 사례 정리, 보고서 초안 작성에 활용합니다." },
-      { icon: "🔎", name: "Perplexity", use: "근거 검색",
-        text: "출처가 달린 답변으로 관련 논문과 가이드라인을 빠르게 찾습니다." },
-      { icon: "📒", name: "NotebookLM", use: "논문 요약",
-        text: "여러 논문 PDF를 올려 핵심을 요약하고 질문하며 읽습니다." },
-      { icon: "📊", name: "Google Sheets + AI", use: "데이터 정리",
-        text: "측정한 관절 각도를 표로 정리하고 그래프로 비교합니다." },
-      { icon: "🎨", name: "Gamma", use: "발표 자료",
-        text: "팀 프로젝트 결과를 발표용 슬라이드로 빠르게 구성합니다." }
+      { icon: "📘", name: "Clinical Orthopaedic Rehabilitation – A Team Approach", use: "4th ed · 2018",
+        text: "Ankle and foot, Knee, Shoulder" },
+      { icon: "📗", name: "A System of Orthopaedic Medicine", use: "3rd ed · 2013",
+        text: "Ankle and foot, Knee, Shoulder" }
     ]
   },
 
@@ -1417,10 +1423,10 @@ window.SITE_CONFIG = {
     title: "🎒 수강 안내 · 준비물",
     lead: "수업 전에 아래 항목을 준비해 주세요.",
     prepare: [
-      { icon: "📱", title: "스마트폰",      text: "동작 촬영용. 삼각대나 거치대가 있으면 더 좋아요." },
-      { icon: "💻", title: "노트북",        text: "AI 도구 실습용. 충전기를 꼭 챙겨 주세요." },
-      { icon: "👟", title: "편한 복장·운동화", text: "2주차 동작 분석 실습에서 직접 움직입니다." },
-      { icon: "🔑", title: "AI 도구 계정",   text: "위 AI 도구에 미리 가입해 두세요." }
+      { icon: "📘", title: "교재 미리 읽기", text: "주차별 관절(어깨 · 무릎 · 발목과 발) 부분을 미리 읽어 오세요." },
+      { icon: "📝", title: "필기도구·노트북", text: "강의 내용과 토론 내용을 정리할 준비를 해 주세요." },
+      { icon: "🩺", title: "증례토론 준비",   text: "수업 중 제시되는 증례를 함께 분석하고 의견을 나눕니다." },
+      { icon: "🔑", title: "회원가입",       text: "'내 강의실'에서 출석과 과제를 관리하려면 미리 가입해 두세요." }
     ],
     apply: {
       title: "회원가입 방법",
@@ -1486,9 +1492,9 @@ window.SITE_CONFIG = {
     delaySeconds: 2.5,                      // 페이지를 연 뒤 몇 초 후에 띄울지
     badge: "회원가입 안내",
     title: "2026 오디세이 강의\n수강생을 모집합니다",
-    text: "관절통을 생체역학과 AI로 풀어보는 3주 과정. 정원이 한정되어 있으니 서둘러 가입해 주세요.",
+    text: "관절의 통증에 영향을 주는 생역학적 불균형을 다루는 3주 과정. 정원이 한정되어 있으니 서둘러 가입해 주세요.",
     deadline: "2026-11-02T18:00",            // 가입 마감 (남은 시간이 팝업에 표시됩니다)
-    highlights: ["11월 3일 개강 · 매주 화요일 저녁", "AI 동작 분석 실습", "[정원 ○○명, 선착순]"],
+    highlights: ["11월 3일 개강 · 매주 화요일 저녁", "강의 · 증례토론 · 일반토론", "[정원 ○○명, 선착순]"],
     ctaLabel: "지금 가입하기"
   },
 
@@ -1499,11 +1505,10 @@ window.SITE_CONFIG = {
     lead: "한 사람당 한 표, 언제든 바꿀 수 있어요. 결과는 실시간으로 반영됩니다.",
     refreshSeconds: 10,                      // 결과 자동 새로고침 간격 (운영 모드)
     options: [
-      { id: "knee",    icon: "🦵", label: "무릎 골관절염과 하중" },
-      { id: "hip",     icon: "🦴", label: "고관절 정렬과 보행" },
-      { id: "shoulder",icon: "💪", label: "어깨 통증과 근육 불균형" },
-      { id: "spine",   icon: "🧍", label: "척추·자세와 관절 부담" },
-      { id: "ai",      icon: "🤖", label: "AI 동작 분석 실습" }
+      { id: "shoulder", icon: "💪", label: "어깨 관절의 움직임과 안정성" },
+      { id: "knee",     icon: "🦵", label: "무릎과 하지 근육의 작용" },
+      { id: "ankle",    icon: "🦶", label: "발목·발 관절의 움직임" },
+      { id: "grf",      icon: "🌍", label: "지면 반발력과 하지 관절" }
     ]
   },
 
@@ -1540,7 +1545,7 @@ window.SITE_CONFIG = {
       { name: "ai",      label: "AI 도구 사용 경험", type: "radio", required: true,
         options: ["처음이에요", "가끔 써요", "자주 써요"] },
       { name: "topics",  label: "관심 주제 (복수 선택)", type: "checkbox", required: true,
-        options: ["무릎", "고관절", "어깨", "척추", "AI 동작 분석"], message: "관심 주제를 1개 이상 골라 주세요." },
+        options: ["어깨", "무릎", "발목·발"], message: "관심 주제를 1개 이상 골라 주세요." },
       { name: "agree",   label: "개인정보(아이디·이름·휴대폰·학번·이메일) 수집 및 강의 운영 목적 이용에 동의합니다.", type: "agree", required: true,
         message: "개인정보 수집·이용에 동의해 주세요." }
     ]
@@ -1580,11 +1585,15 @@ window.SITE_CONFIG = {
     lead: "교수자 화면의 QR 코드를 찍거나 PIN을 입력해 입장하세요. 빨리 맞힐수록 점수가 높아요!",
     joinUrl: "",
     pollSeconds: 1.5,                 // 운영 모드에서 화면을 새로 고치는 간격(초)
-    ai: { model: "claude-sonnet-4-5" }, // 'API로 바로 생성'에 쓰는 Claude 모델 이름 (docs.claude.com 에서 최신 이름 확인)
+    ai: {
+      model: "claude-sonnet-4-5",     // '② API로 바로 생성'에 쓰는 Claude 모델 이름 (docs.claude.com 에서 최신 이름 확인)
+      // '③ BAZE API로 생성' 기본값 (BAZE API Gateway). 모델은 관리자 → API 키 설정 → '모델 목록 불러오기'로 고를 수 있습니다.
+      baze: { baseUrl: "https://api.baze.co/v1/gateway", model: "", format: "openai" }   // format: "openai"(chat/completions) 또는 "anthropic"(Claude 계열, messages). API 키는 여기 적지 말고 관리자 → API 키 설정에서 입력
+    },
     sets: [
       {
         id: "week1",
-        title: "1주차 복습 · 관절과 힘의 언어",
+        title: "관절 생역학 기초 퀴즈",
         questions: [
           { type: "mc", time: 20, text: "평지 보행 중 무릎 관절에 걸리는 접촉력(관절 반력)은 대략 체중의 몇 배일까요?",
             options: ["약 0.5배", "약 1배", "약 2–3배", "약 10배"], answer: 2,
@@ -1612,13 +1621,13 @@ window.SITE_CONFIG = {
     title: "💬 자주 묻는 질문",
     items: [
       { q: "공학이나 물리 배경이 없어도 들을 수 있나요?",
-        a: "네. 필요한 역학 개념은 1주차에 의학적 예시로 처음부터 설명합니다. 고등학교 수준의 물리 지식이면 충분합니다." },
-      { q: "AI 도구를 한 번도 써 본 적이 없어요.",
-        a: "괜찮습니다. 각 도구는 수업 중에 사용법부터 함께 따라 하며 익힙니다." },
-      { q: "유료 AI 서비스에 가입해야 하나요?",
-        a: "아니요. 실습은 모두 무료 기능 범위에서 진행합니다." },
-      { q: "환자 정보나 영상은 어떻게 다루나요?",
-        a: "사례는 모두 익명화된 자료를 사용하며, AI 도구에 개인 식별 정보를 입력하지 않는 원칙을 첫 시간에 안내합니다." },
+        a: "네. 필요한 생역학 개념은 수업에서 임상 예시와 함께 설명합니다." },
+      { q: "수업은 어떻게 진행되나요?",
+        a: "매주 강의와 증례토론, 일반토론으로 진행합니다. 1주차 어깨, 2주차 무릎, 3주차 발목과 발을 다룹니다." },
+      { q: "교재는 무엇을 보나요?",
+        a: "Clinical Orthopaedic Rehabilitation – A Team Approach(4th ed, 2018)와 A System of Orthopaedic Medicine(3rd ed, 2013)의 Ankle and foot, Knee, Shoulder 부분을 참고합니다." },
+      { q: "증례의 환자 정보는 어떻게 다루나요?",
+        a: "증례는 모두 익명화된 자료를 사용하며, 개인 식별 정보를 외부에 공유하지 않습니다." },
       { q: "결석하면 어떻게 하나요?",
         a: "3주 과정이라 한 번의 결석도 영향이 큽니다. 부득이한 경우 사전에 교수자에게 알려 주시면 보충 자료를 안내합니다." }
     ]
@@ -1629,11 +1638,11 @@ window.SITE_CONFIG = {
     // 사진: 관리자 화면 → 콘텐츠 편집 → 교수자 → [사진 올리기] 로 넣으면 index.html 안에 함께 저장됩니다.
     //       (사진 주소 URL 을 적어도 됩니다. 비워 두면 이니셜이 표시됩니다)
     photo: "",
-    initials: "KU",
-    name: "[교수 성명]",
-    position: "[직위] · 고려대학교 의과대학 의학과",
-    bio: "[교수자 소개 문구를 입력하세요. 연구 분야, 임상 경력, 강의 철학 등을 2–3문장으로 적어 주세요.]",
-    interests: ["관절 생체역학", "골관절염", "보행 분석", "AI 활용 교육"],
+    initials: "김",
+    name: "김기훈",
+    position: "고려대학교 안산병원 재활의학과 교수",
+    bio: "",
+    interests: ["재활의학", "관절의 생역학", "어깨 · 무릎 · 발목과 발"],
     contacts: [
       { icon: "✉️", label: "이메일",   value: "[email@korea.ac.kr]", link: "mailto:[email@korea.ac.kr]" },
       { icon: "📞", label: "전화",     value: "[02-0000-0000]" },
@@ -1644,7 +1653,7 @@ window.SITE_CONFIG = {
 };
 
 /* 이 파일이 만들어진 시각 - 브라우저에 남은 예전 수정본보다 새 파일을 우선 적용 */
-window.SITE_CONFIG.__savedAt = "2026-11-01T03:17:36.000Z";
+window.SITE_CONFIG.__savedAt = "2026-11-01T04:23:16.000Z";
 </script>
 <script id="app-js" data-bundle="1">
 /* =====================================================================
@@ -1754,10 +1763,12 @@ window.SITE_CONFIG.__savedAt = "2026-11-01T03:17:36.000Z";
   const start = parseDay(cu.startDate);
   const weeks = (cu.weeks || []).map((w, i) => ({
     ...w, i,
+    assignment: w.assignment && String(w.assignment.title || "").trim() ? w.assignment : null,   // 제목이 비어 있으면 '과제 없음'
+
     date: w.date ? parseDay(w.date) : addDays(start, 7 * i),
     time: w.time || cu.time,
     location: w.location || cu.location,
-    dueDate: w.assignment && w.assignment.due ? parseDT(w.assignment.due) : null
+    dueDate: w.assignment && String(w.assignment.title || "").trim() && w.assignment.due ? parseDT(w.assignment.due) : null
   }));
   const nextWeek = weeks.find((w) => keyOf(w.date) >= todayKey());
   function statusOf(w) {
@@ -1975,7 +1986,7 @@ window.SITE_CONFIG.__savedAt = "2026-11-01T03:17:36.000Z";
   /* ---------- AI 도구 ---------- */
   const t = C.tools;
   $("#tools").innerHTML = head(t) + `
-    <div class="grid grid--3">
+    <div class="grid grid--${(t.items || []).length === 2 ? 2 : 3}">
       ${list(t.items, (x) => `
         <article class="card tool reveal">
           <div class="tool__top"><span class="tool__icon">${esc(x.icon)}</span><span class="tool__use">${esc(x.use)}</span></div>
@@ -2025,7 +2036,7 @@ window.SITE_CONFIG.__savedAt = "2026-11-01T03:17:36.000Z";
           <span class="eyebrow eyebrow--light">Instructor</span>
           <h3>${esc(p.name)}</h3>
           <p class="position">${esc(p.position)}</p>
-          <p>${esc(p.bio)}</p>
+          ${p.bio ? `<p>${esc(p.bio)}</p>` : ""}
           <div class="chips">${list(p.interests, (x) => `<span class="chip">${esc(x)}</span>`)}</div>
         </div>
         <ul class="contacts">
@@ -2505,7 +2516,7 @@ window.SITE_CONFIG.__savedAt = "2026-11-01T03:17:36.000Z";
       ${!REMOTE ? `<p class="mode-note">🧪 체험 모드에서는 수업 날짜와 관계없이 눌러볼 수 있어요. 운영 모드에서는 수업 ${PT.attendance.openBeforeMin}분 전부터 종료 ${PT.attendance.closeAfterMin}분 후까지만 열립니다.</p>` : ""}
 
       <h4 class="portal__h">📤 과제 제출</h4>
-      <form class="upload" novalidate>
+      ${hwWeeks.length ? `<form class="upload" novalidate>
         <label class="field__label" for="up-week">과제 선택</label>
         <select id="up-week">${list(hwWeeks, (w) => `<option value="${w.i}">${esc(w.tag)} · ${esc(w.assignment.title)}</option>`)}</select>
         <div class="upload__due"></div>
@@ -2517,7 +2528,7 @@ window.SITE_CONFIG.__savedAt = "2026-11-01T03:17:36.000Z";
         </label>
         <p class="field__err upload__err" role="alert"></p>
         <button class="btn btn--primary" type="submit" disabled>제출하기</button>
-      </form>
+      </form>` : `<p class="muted">지금은 제출할 과제가 없습니다.</p>`}
       <ul class="subs">
         ${list(hwWeeks, (w) => {
           const s = subsBy[w.i];
@@ -2527,6 +2538,7 @@ window.SITE_CONFIG.__savedAt = "2026-11-01T03:17:36.000Z";
         })}
       </ul>`;
     const sel = $("#up-week");
+    if (!sel) { pendingWeek = null; return; }
     if (pendingWeek != null && hwWeeks.some((w) => w.i === pendingWeek)) sel.value = pendingWeek;
     pendingWeek = null;
     showDue();
@@ -2771,7 +2783,7 @@ window.SITE_CONFIG.__savedAt = "2026-11-01T03:17:36.000Z";
   /* ================= 공지사항 (사이트 화면) ================= */
   const noticeBox = $("#notice");
   // 📌 고정 공지가 맨 위, 그다음 최신순
-  const sortNotices = (arr) => (arr || []).slice().sort((a, b) => (b.pinned ? 1 : 0) - (a.pinned ? 1 : 0) || String(b.date).localeCompare(String(a.date)));
+  const sortNotices = (arr) => (arr || []).slice().sort((a, b) => (b.pinned ? 1 : 0) - (a.pinned ? 1 : 0) || String(b.date).localeCompare(String(a.date)) || String(b.createdAt || "").localeCompare(String(a.createdAt || "")));   // 같은 날짜면 나중에 쓴 글이 위
   const NOTICE_PER_PAGE = 3;   // 첫 화면 공지사항: 한 페이지에 3개씩
   let noticeItems = [], noticePage = 1;
   function renderNotices(items, keepPage) {
@@ -2928,7 +2940,7 @@ window.SITE_CONFIG.__savedAt = "2026-11-01T03:17:36.000Z";
   /* ================= 관리자 화면 ================= */
   const TABS = [
     ["dash", "📊", "대시보드"], ["content", "✏️", "콘텐츠 편집"], ["notice", "📢", "공지"],
-    ["roster", "👥", "수강생 명단"], ["records", "📋", "기록·내려받기"], ["files", "💾", "설정 저장"]
+    ["roster", "👥", "수강생 명단"], ["records", "📋", "기록·내려받기"], ["api", "🔑", "API 키 설정"], ["files", "💾", "설정 저장"]
   ];
   let work = clone(C), panel = null, curTab = "dash", curSection = "site", recTab = "apply", data = null, dirty = false;
 
@@ -2980,7 +2992,7 @@ window.SITE_CONFIG.__savedAt = "2026-11-01T03:17:36.000Z";
   function showTab(id) {
     curTab = id;
     $$(".admin__tabs button", panel).forEach((b) => b.setAttribute("aria-selected", String(b.dataset.tab === id)));
-    ({ dash: tabDash, content: tabContent, notice: tabNotice, roster: tabRoster, records: tabRecords, files: tabFiles })[id]();
+    ({ dash: tabDash, content: tabContent, notice: tabNotice, roster: tabRoster, records: tabRecords, api: tabApi, files: tabFiles })[id]();
     main().scrollTop = 0;
   }
 
@@ -3040,6 +3052,7 @@ window.SITE_CONFIG.__savedAt = "2026-11-01T03:17:36.000Z";
           <button class="btn btn--ghost btn--sm" data-goto="roster">수강생 등록</button>
           <button class="btn btn--ghost btn--sm" data-goto="records">기록 내려받기</button>
           <button class="btn btn--ghost btn--sm" data-goto="content">사이트 내용 고치기</button>
+          <button class="btn btn--ghost btn--sm" data-goto="api">🔑 API 키 설정</button>
           <button class="btn btn--primary btn--sm" data-act="quiz">🎮 실시간 퀴즈 진행</button>
         </div>
       </div>`;
@@ -3370,6 +3383,101 @@ window.SITE_CONFIG.__savedAt = "2026-11-01T03:17:36.000Z";
     setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 4000);
   }
 
+  /* ---------- API 키 설정 (Claude · BAZE) ---------- */
+  // 키는 이 브라우저(localStorage)에만 저장되고, 내려받는 index.html 에는 절대 들어가지 않습니다.
+  const mask = (k) => (k ? `${k.slice(0, 7)}••••${k.slice(-4)}` : "");
+  const aiS = () => (window.__AI ? window.__AI.settings() : { claude: {}, baze: {}, preferred: "copy" });
+  function tabApi() {
+    const st = aiS(), c = st.claude, b = st.baze;
+    const status = (k) => k ? `<span class="pill pill--ok">저장됨 · ${esc(mask(k))}</span>` : `<span class="pill pill--miss">키 없음</span>`;
+    main().innerHTML = `
+      <h2 class="admin__h">API 키 설정</h2>
+      <p class="admin__hint">실시간 퀴즈의 'AI로 문제 만들기'에 쓰는 API 키를 관리합니다. 키는 <b>이 브라우저에만</b> 저장되며, 내려받는 index.html 에는 포함되지 않습니다. 다른 컴퓨터에서는 다시 입력해 주세요.</p>
+      <div class="admin__grid2">
+        <form class="admin__card apic" data-prov="claude" novalidate>
+          <div class="apic__head"><h3>🟠 Claude API</h3>${status(c.key)}</div>
+          <label class="ed-field"><span>API 키</span>
+            <span class="apic__key"><input type="password" name="key" placeholder="${c.key ? "새 키를 넣으면 바뀝니다" : "sk-ant-..."}" autocomplete="off"><button type="button" class="apic__eye" data-eye aria-label="키 보기">👁</button></span></label>
+          <label class="ed-field"><span>모델</span><input name="model" value="${esc(c.model)}" placeholder="claude-sonnet-4-5"></label>
+          <p class="apic__msg" aria-live="polite"></p>
+          <div class="ed__actions">
+            <button type="button" class="btn btn--ghost btn--sm" data-act="ai-del" ${c.key ? "" : "disabled"}>키 삭제</button>
+            <button type="button" class="btn btn--ghost btn--sm" data-act="ai-test">연결 테스트</button>
+            <button type="submit" class="btn btn--primary btn--sm">저장</button>
+          </div>
+        </form>
+        <form class="admin__card apic" data-prov="baze" novalidate>
+          <div class="apic__head"><h3>🟣 BAZE API</h3>${status(b.key)}</div>
+          <label class="ed-field"><span>BAZE API 키</span>
+            <span class="apic__key"><input type="password" name="key" placeholder="${b.key ? "새 키를 넣으면 바뀝니다" : "baze_..."}" autocomplete="off"><button type="button" class="apic__eye" data-eye aria-label="키 보기">👁</button></span></label>
+          <label class="ed-field"><span>API 주소 (Base URL)</span><input name="base" value="${esc(b.base)}" placeholder="https://api.baze.co/v1/gateway"></label>
+          <div class="qai__row2">
+            <label class="ed-field"><span>모델</span><input name="model" value="${esc(b.model)}" list="baze-models" placeholder="'모델 목록 불러오기'로 선택"></label>
+            <label class="ed-field"><span>요청 형식</span><select name="fmt">
+              <option value="openai" ${b.fmt === "openai" ? "selected" : ""}>OpenAI 호환 (GPT 등)</option>
+              <option value="anthropic" ${b.fmt === "anthropic" ? "selected" : ""}>Anthropic 호환 (Claude 계열)</option></select></label>
+          </div>
+          <datalist id="baze-models"></datalist>
+          <p class="apic__msg" aria-live="polite"></p>
+          <div class="ed__actions">
+            <button type="button" class="btn btn--ghost btn--sm" data-act="ai-models">모델 목록 불러오기</button>
+            <button type="button" class="btn btn--ghost btn--sm" data-act="ai-del" ${b.key ? "" : "disabled"}>키 삭제</button>
+            <button type="button" class="btn btn--ghost btn--sm" data-act="ai-test">연결 테스트</button>
+            <button type="submit" class="btn btn--primary btn--sm">저장</button>
+          </div>
+        </form>
+      </div>
+      <div class="admin__card">
+        <h3>🤖 퀴즈 'AI로 문제 만들기'에서 먼저 열 방식</h3>
+        <div class="choices apic__pref">
+          ${list([["copy", "① 프롬프트 복사"], ["claude", "② Claude API"], ["baze", "③ BAZE API"]], ([v, l]) => `<label class="choice"><input type="radio" name="ai-pref" value="${v}" ${st.preferred === v ? "checked" : ""}><span>${l}</span></label>`)}
+        </div>
+        <p class="mode-note">⚠ 공용 PC에서는 사용 후 '키 삭제'를 눌러 주세요. 키는 사이트 파일·설정 백업(.json)·안내서 어디에도 저장되지 않습니다.</p>
+      </div>`;
+  }
+  const keyName = { claude: "quizApiKey", baze: "bazeKey" };
+  function apiFormValues(f) {
+    const prov = f.dataset.prov, el = f.elements, st = aiS()[prov] || {};
+    const typed = el.key.value.trim();
+    return { prov, key: typed || st.key || "", typed, model: el.model.value.trim(),
+      base: el.base ? el.base.value.trim().replace(/\/+$/, "") : "", fmt: el.fmt ? el.fmt.value : "" };
+  }
+  function apiMsg(f, text, bad) { const m = $(".apic__msg", f); m.textContent = text; m.classList.toggle("is-bad", !!bad); }
+  function saveApi(v) {
+    if (v.typed) store.set(P + keyName[v.prov], v.typed);
+    if (v.prov === "claude") store.set(P + "quizModel", v.model);
+    else { store.set(P + "bazeUrl", v.base); store.set(P + "bazeModel", v.model); store.set(P + "bazeFmt", v.fmt); }
+  }
+  async function apiAction(act, f) {
+    const v = apiFormValues(f);
+    if (act === "ai-del") {
+      store.set(P + keyName[v.prov], ""); toast(`${v.prov === "claude" ? "Claude" : "BAZE"} API 키를 삭제했습니다.`); return tabApi();
+    }
+    if (!window.__AI) return apiMsg(f, "⚠ 퀴즈 기능을 불러오지 못했습니다.", true);
+    if (!v.key) return apiMsg(f, "⚠ API 키를 입력해 주세요.", true);
+    if (v.prov === "baze" && !/^https:\/\//i.test(v.base)) return apiMsg(f, "⚠ API 주소를 https:// 로 시작하게 입력해 주세요.", true);
+    if (act === "ai-models") {
+      apiMsg(f, "모델 목록을 불러오는 중…");
+      try {
+        const ms = await window.__AI.listBazeModels({ key: v.key, base: v.base });
+        $("#baze-models", panel).innerHTML = list(ms, (x) => `<option value="${esc(x)}">`);
+        apiMsg(f, ms.length ? `✅ 모델 ${ms.length}개를 불러왔습니다. 모델 칸을 눌러 고르세요.` : "모델 목록이 비어 있습니다.");
+        if (ms.length && !v.model) f.elements.model.value = ms[0];
+      } catch (ex) { apiMsg(f, "⚠ " + ex.message, true); }
+      return;
+    }
+    if (act === "ai-test") {
+      if (!v.model) return apiMsg(f, "⚠ 모델 이름을 입력해 주세요.", true);
+      apiMsg(f, "연결을 확인하는 중…"); const t0 = performance.now();
+      try {
+        const q = "연결 테스트입니다. OK 라고만 답하세요.";
+        const out = v.prov === "claude" ? await window.__AI.callClaude(q, { key: v.key, model: v.model, max: 20 })
+          : await window.__AI.callBaze(q, { key: v.key, base: v.base, model: v.model, fmt: v.fmt, max: 20 });
+        apiMsg(f, `✅ 연결 성공 (${((performance.now() - t0) / 1000).toFixed(1)}초) · 응답: ${String(out).trim().slice(0, 40)}`);
+      } catch (ex) { apiMsg(f, "⚠ 연결 실패: " + ex.message, true); }
+    }
+  }
+
   /* ---------- 설정 파일 ---------- */
   const SINGLE = !!window.__PAGE_PREFIX;   // index.html 한 파일로 된 사이트인지
   function tabFiles() {
@@ -3526,6 +3634,10 @@ window.SITE_CONFIG = ${JSON.stringify(cfg, null, 2).replace(/<\//g, "<\\/")};
     const rd = t.closest("[data-rdel]"); if (rd) { rosterDraft.splice(Number(rd.dataset.rdel), 1); return tabRoster(); }
 
     const pc = t.closest("[data-photo-clear]"); if (pc) { setAt(work, JSON.parse(pc.dataset.photoClear), ""); markDirty(); return rerenderForm(); }
+    const eye = t.closest("[data-eye]");
+    if (eye) { const inp = eye.previousElementSibling; inp.type = inp.type === "password" ? "text" : "password"; return; }
+    const aiBtn = t.closest("[data-act^='ai-']");
+    if (aiBtn) { aiBtn.disabled = true; try { await apiAction(aiBtn.dataset.act, aiBtn.closest(".apic")); } finally { if (document.body.contains(aiBtn)) aiBtn.disabled = false; } return; }
     const act = t.closest("[data-act]"); if (!act) return;
     switch (act.dataset.act) {
       case "close": return closeAdmin();
@@ -3600,6 +3712,7 @@ window.SITE_CONFIG = ${JSON.stringify(cfg, null, 2).replace(/<\//g, "<\\/")};
   async function onPanelChange(e) {
     const t = e.target;
     if (t.classList.contains("ed__select")) { curSection = t.value; return tabContent(); }
+    if (t.name === "ai-pref") { store.set(P + "aiDefault", t.value); return toast("퀴즈 'AI로 문제 만들기'의 기본 방식을 바꿨습니다."); }
     if (t.dataset.type === "bool") onPanelInput(e);
     if (t.dataset.photo && t.files[0]) {
       try {
@@ -3629,11 +3742,19 @@ window.SITE_CONFIG = ${JSON.stringify(cfg, null, 2).replace(/<\//g, "<\\/")};
     if (!panel || !panel.contains(e.target)) return;
     e.preventDefault();
     const f = e.target;
+    if (f.classList.contains("apic")) {
+      const v = apiFormValues(f);
+      if (!v.key) return apiMsg(f, "⚠ API 키를 입력해 주세요.", true);
+      if (v.prov === "baze" && !/^https:\/\//i.test(v.base)) return apiMsg(f, "⚠ API 주소를 https:// 로 시작하게 입력해 주세요.", true);
+      saveApi(v); toast(`${v.prov === "claude" ? "Claude" : "BAZE"} API 설정을 저장했습니다.`); return tabApi();
+    }
     if (f.classList.contains("nform")) {
       const el = f.elements, title = el.title.value.trim(), body = el.body.value.trim(), err = $(".nform__err", f);
       if (!title || !body) { err.textContent = `⚠ ${!title ? "제목" : "내용"}을 입력해 주세요.`; (!title ? el.title : el.body).focus(); return; }
       work.notices = work.notices || [];
       const item = { id: editNotice || "n" + Date.now().toString(36), date: el.date.value || todayStr(), pinned: el.pinned.checked, important: el.important.checked, popup: el.popup.checked, popupUntil: el.popup.checked ? el.popupUntil.value : "", title, body };
+      const prev = (work.notices || []).find((n) => n.id === item.id);
+      item.createdAt = prev && prev.createdAt ? prev.createdAt : new Date().toISOString();
       if (editNotice) item.updated = todayStr();   // 수정한 날짜 기록
       const i = work.notices.findIndex((n) => n.id === item.id);
       if (i >= 0) work.notices[i] = item; else work.notices.push(item);
@@ -6494,7 +6615,7 @@ var qrcode = function() {
           <label class="ed-field"><span>유형</span><select class="qai-type"><option value="mix">4지선다 + O/X</option><option value="mc">4지선다만</option><option value="ox">O/X만</option></select></label>
           <label class="ed-field"><span>제한 시간</span><select class="qai-time">${list([10, 15, 20, 30], (t) => `<option value="${t}" ${t === 20 ? "selected" : ""}>${t}초</option>`)}</select></label>
         </div>
-        <div class="seg qai__seg"><button class="is-on" data-aim="copy">① 프롬프트 복사해서 AI에 묻기</button><button data-aim="api">② API로 바로 생성</button></div>
+        <div class="seg qai__seg"><button class="is-on" data-aim="copy">① 프롬프트 복사해서 AI에 묻기</button><button data-aim="api">② API로 바로 생성</button><button data-aim="baze">③ BAZE API로 생성</button></div>
         <div class="qai__pane" data-pane="copy">
           <p class="admin__hint">ChatGPT · Claude · Gemini 등 쓰시는 AI에 프롬프트를 붙여 넣고, 받은 답을 아래에 그대로 붙여 넣으세요.</p>
           <div class="qai__row"><button class="btn btn--primary btn--sm" data-ai="copy">📋 프롬프트 복사</button><button class="link-btn" data-ai="show">프롬프트 보기</button></div>
@@ -6509,11 +6630,26 @@ var qrcode = function() {
           <label class="agree"><input type="checkbox" class="qai-remember" ${store.get(P + "quizApiKey", "") ? "checked" : ""}><span>이 기기에 키 기억하기</span></label>
           <button class="btn btn--primary btn--sm" data-ai="api">✨ 생성하기</button>
         </div>
+        <div class="qai__pane" data-pane="baze" hidden>
+          <p class="admin__hint">BAZE API 키로 바로 만들 수 있어요. 관리자 → <b>API 키 설정</b>에 저장해 두면 자동으로 채워집니다. 키는 <b>이 브라우저에서 입력한 API 주소로만</b> 전송됩니다. 공용 PC에서는 '기억하기'를 끄세요.</p>
+          <label class="ed-field"><span>BAZE API 키</span><input type="password" class="qai-bkey" placeholder="BAZE API 키" value="${esc(store.get(P + "bazeKey", ""))}" autocomplete="off"></label>
+          <label class="ed-field"><span>API 주소 (Base URL)</span><input class="qai-burl" placeholder="https://api.baze.co/v1/gateway" value="${esc(aiSettings().baze.base)}"></label>
+          <div class="qai__row2">
+            <label class="ed-field"><span>모델</span><input class="qai-bmodel" placeholder="문서의 모델 이름" value="${esc(aiSettings().baze.model)}"></label>
+            <label class="ed-field"><span>요청 형식</span><select class="qai-bfmt">
+              ${list([["openai", "OpenAI 호환 (chat/completions)"], ["anthropic", "Anthropic 호환 (messages)"]], ([v, l]) => `<option value="${v}" ${aiSettings().baze.fmt === v ? "selected" : ""}>${l}</option>`)}
+            </select></label>
+          </div>
+          <label class="agree"><input type="checkbox" class="qai-bremember" ${store.get(P + "bazeKey", "") ? "checked" : ""}><span>이 기기에 키 기억하기</span></label>
+          <button class="btn btn--primary btn--sm" data-ai="baze">✨ BAZE로 생성하기</button>
+        </div>
         <p class="field__err qai-err"></p>
         <div class="qai__preview"></div>
       </div>`;
     H.el.appendChild(m);
     requestAnimationFrame(() => m.classList.add("is-open"));
+    { const pref = aiSettings().preferred, tab = { claude: "api", baze: "baze" }[pref];   // 관리자에서 정한 기본 AI 탭 열기
+      if (tab) { $$("[data-aim]", m).forEach((b) => b.classList.toggle("is-on", b.dataset.aim === tab)); $$("[data-pane]", m).forEach((p) => (p.hidden = p.dataset.pane !== tab)); } }
     let preview = [];
     const close = () => { m.classList.remove("is-open"); setTimeout(() => m.remove(), 250); };
     const prompt = () => buildPrompt($(".qai-topic", m).value, $(".qai-n", m).value, $(".qai-level", m).value, $(".qai-type", m).value);
@@ -6552,20 +6688,25 @@ var qrcode = function() {
       }
       if (a.dataset.ai === "api") {
         const key = $(".qai-key", m).value.trim(), model = $(".qai-model", m).value.trim();
-        if (!key) { err.textContent = "⚠ API 키를 입력해 주세요."; return; }
+        if (!key) { err.textContent = "⚠ API 키를 입력해 주세요. (관리자 → API 키 설정에서 저장해 둘 수도 있어요)"; return; }
         store.set(P + "quizApiKey", $(".qai-remember", m).checked ? key : ""); store.set(P + "quizModel", model);
         a.disabled = true; a.innerHTML = `<span class="spinner"></span> 생성 중… (10–30초)`;
-        try {
-          const r = await fetch("https://api.anthropic.com/v1/messages", {
-            method: "POST",
-            headers: { "content-type": "application/json", "x-api-key": key, "anthropic-version": "2023-06-01", "anthropic-dangerous-direct-browser-access": "true" },
-            body: JSON.stringify({ model, max_tokens: 4000, messages: [{ role: "user", content: prompt() }] })
-          });
-          const j = await r.json();
-          if (!r.ok) throw new Error((j.error && j.error.message) || `요청 실패 (${r.status})`);
-          showPreview(parseAI((j.content || []).map((c) => c.text || "").join("")));
-        } catch (ex) { err.textContent = "⚠ " + (ex.message === "Failed to fetch" ? "Anthropic 서버에 연결하지 못했습니다. 인터넷 연결을 확인하거나 ① 복사 방식을 써 주세요." : ex.message); }
+        try { showPreview(parseAI(await callClaude(prompt(), { key, model }))); }
+        catch (ex) { err.textContent = "⚠ " + ex.message; }
         a.disabled = false; a.textContent = "✨ 생성하기";
+        return;
+      }
+      if (a.dataset.ai === "baze") {
+        const key = $(".qai-bkey", m).value.trim(), model = $(".qai-bmodel", m).value.trim(), fmt = $(".qai-bfmt", m).value;
+        const base = $(".qai-burl", m).value.trim().replace(/\/+$/, "");
+        if (!key) { err.textContent = "⚠ BAZE API 키를 입력해 주세요. (관리자 → API 키 설정에서 저장해 둘 수도 있어요)"; return; }
+        if (!/^https:\/\//i.test(base)) { err.textContent = "⚠ API 주소를 https:// 로 시작하게 입력해 주세요."; return; }
+        if (!model) { err.textContent = "⚠ 모델 이름을 입력해 주세요. (관리자 → API 키 설정 → '모델 목록 불러오기')"; return; }
+        store.set(P + "bazeKey", $(".qai-bremember", m).checked ? key : ""); store.set(P + "bazeUrl", base); store.set(P + "bazeModel", model); store.set(P + "bazeFmt", fmt);
+        a.disabled = true; a.innerHTML = `<span class="spinner"></span> 생성 중… (10–30초)`;
+        try { showPreview(parseAI(await callBaze(prompt(), { key, base, model, fmt }))); }
+        catch (ex) { err.textContent = "⚠ " + ex.message; }
+        a.disabled = false; a.textContent = "✨ BAZE로 생성하기";
         return;
       }
       if (a.dataset.ai === "add") {
@@ -6576,6 +6717,71 @@ var qrcode = function() {
       }
     });
   }
+  /* ---------- AI 호출 (Claude · BAZE) — 관리자 'API 키 설정'에서도 함께 사용 ---------- */
+  const BAZE_DEFAULT_URL = "https://api.baze.co/v1/gateway";
+  const aiSettings = () => ({
+    claude: { key: store.get(P + "quizApiKey", ""), model: store.get(P + "quizModel", "") || (Q.ai && Q.ai.model) || "" },
+    baze: {
+      key: store.get(P + "bazeKey", ""),
+      base: store.get(P + "bazeUrl", "") || ((Q.ai && Q.ai.baze) || {}).baseUrl || BAZE_DEFAULT_URL,
+      model: store.get(P + "bazeModel", "") || ((Q.ai && Q.ai.baze) || {}).model || "",
+      fmt: store.get(P + "bazeFmt", "") || ((Q.ai && Q.ai.baze) || {}).format || "openai"
+    },
+    preferred: store.get(P + "aiDefault", "copy")
+  });
+  const netError = (ex, who) => new Error(ex.message === "Failed to fetch" ? `${who} 서버에 연결하지 못했습니다. 주소·인터넷 연결을 확인하거나 ① 복사 방식을 써 주세요.` : ex.message);
+  async function readJSON(r) { const t = await r.text(); try { return JSON.parse(t); } catch (_) { return { message: t.slice(0, 200) }; } }
+  const errMsg = (j, r) => (j.error && (j.error.message || (typeof j.error === "string" ? j.error : ""))) || j.message || j.detail || `요청 실패 (${r.status})`;
+  async function callClaude(promptText, o) {
+    let r, j;
+    try {
+      r = await fetch("https://api.anthropic.com/v1/messages", {
+        method: "POST",
+        headers: { "content-type": "application/json", "x-api-key": o.key, "anthropic-version": "2023-06-01", "anthropic-dangerous-direct-browser-access": "true" },
+        body: JSON.stringify({ model: o.model, max_tokens: o.max || 4000, messages: [{ role: "user", content: promptText }] })
+      });
+      j = await readJSON(r);
+    } catch (ex) { throw netError(ex, "Anthropic"); }
+    if (!r.ok) throw new Error(errMsg(j, r));
+    return (j.content || []).map((c) => c.text || "").join("");
+  }
+  // BAZE 게이트웨이: OpenAI 호환(…/gateway/chat/completions) 또는 Claude 계열(…/gateway/claude/v1/messages)
+  function bazeEndpoint(base, fmt) {
+    base = String(base || BAZE_DEFAULT_URL).replace(/\/+$/, "");
+    if (/\/(chat\/completions|messages)$/.test(base)) return base;
+    if (fmt === "anthropic") {
+      if (/\/v1$/.test(base) && /\/claude\/v1$/.test(base)) return base + "/messages";
+      if (/\/claude$/.test(base)) return base + "/v1/messages";
+      if (/\/gateway$/.test(base)) return base + "/claude/v1/messages";
+      return base + "/messages";
+    }
+    return base + "/chat/completions";
+  }
+  async function callBaze(promptText, o) {
+    const url = bazeEndpoint(o.base, o.fmt);
+    const headers = o.fmt === "anthropic"
+      ? { "content-type": "application/json", "x-api-key": o.key, "anthropic-version": "2023-06-01" }
+      : { "content-type": "application/json", "Authorization": "Bearer " + o.key };
+    let r, j;
+    try { r = await fetch(url, { method: "POST", headers, body: JSON.stringify({ model: o.model, max_tokens: o.max || 4000, messages: [{ role: "user", content: promptText }] }) }); j = await readJSON(r); }
+    catch (ex) { throw netError(ex, "BAZE"); }
+    if (!r.ok) throw new Error(errMsg(j, r));
+    const text = o.fmt === "anthropic" ? (j.content || []).map((c) => c.text || "").join("")
+      : ((j.choices && j.choices[0] && j.choices[0].message && j.choices[0].message.content) || "");
+    if (!text) throw new Error("응답에서 생성된 글을 찾지 못했습니다. 요청 형식(OpenAI/Anthropic 호환)을 바꿔 보세요.");
+    return text;
+  }
+  async function listBazeModels(o) {
+    const base = String(o.base || BAZE_DEFAULT_URL).replace(/\/+$/, "").replace(/\/(claude(\/v1)?|chat\/completions|messages)$/, "");
+    let r, j;
+    try { r = await fetch(base + "/models/", { headers: { "Authorization": "Bearer " + o.key } }); j = await readJSON(r); }
+    catch (ex) { throw netError(ex, "BAZE"); }
+    if (!r.ok) throw new Error(errMsg(j, r));
+    const arr = Array.isArray(j) ? j : j.data || j.models || [];
+    return arr.map((x) => (typeof x === "string" ? x : x.id || x.name)).filter(Boolean);
+  }
+  window.__AI = { callClaude, callBaze, listBazeModels, settings: aiSettings, BAZE_DEFAULT_URL };
+
   function buildPrompt(topic, n, level, type) {
     const typeText = { mix: "4지선다(mc)와 O/X(ox)를 섞어서 (O/X는 전체의 1/3 이하)", mc: "모두 4지선다(mc)", ox: "모두 O/X(ox)" }[type];
     return `당신은 ${C.site.university} ${C.site.department} 「${C.site.title}」 강의의 퀴즈 출제 도우미입니다.
@@ -6958,7 +7164,7 @@ answer 는 정답 보기의 번호이며 0부터 시작합니다. O/X 문항의 
       <tr><td>첫 화면</td><td>배지·제목·부제·설명, 회원가입/커리큘럼 버튼, 일정·시간·방식·대상 카드, 공지사항</td></tr>
       <tr><td>프로그램 소개</td><td>숫자 통계 카드(카운트 애니메이션), 강의 장점 슬라이드</td></tr>
       <tr><td>커리큘럼</td><td>주차별 펼쳐보기(날짜·시간·장소·학습 내용·참고 영상·과제·마감 카운트다운·제출 버튼), 월간 달력</td></tr>
-      <tr><td>수강 안내</td><td>AI 도구, 준비물, 가입 방법, 회원가입(빠진 항목 안내 · 가입 즉시 내 강의실 계정 생성)</td></tr>
+      <tr><td>수강 안내</td><td>교재와 참고자료, 준비물, 가입 방법, 회원가입(빠진 항목 안내 · 가입 즉시 내 강의실 계정 생성)</td></tr>
       <tr><td>참여하기</td><td>주제 투표, 내 강의실(로그인·출석·과제 제출), <b>실시간 퀴즈</b></td></tr>
       <tr><td>FAQ · 교수자</td><td>자주 묻는 질문, 교수자 사진·소개·연락처 푸터</td></tr>
       <tr><td>그 밖에</td><td>첫 방문 환영 폭죽, 회원가입 안내 팝업(오늘 하루 보지 않기), 맨 위로 버튼, 오른쪽 위 🔒 관리자</td></tr>
